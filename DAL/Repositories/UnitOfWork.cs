@@ -26,7 +26,7 @@ namespace DAL.Repositories
             catch (DbUpdateConcurrencyException exc)
             {
                 var entity = exc.Entries[0];
-                var message = $"Invalid {entity?.Entity.GetType().Name} ID: {entity?.Property("Id").OriginalValue}"
+                var message = $"Invalid {entity?.Entity.GetType().Name} ID: {entity?.Property("Id").OriginalValue}";
 
                 throw new InvalidOperationException(message, exc);
             }

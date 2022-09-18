@@ -1,4 +1,6 @@
+using API;
 using Application.Pipeline;
+using Application.Services;
 using DAL;
 using DAL.Exceptions;
 using DAL.Repositories;
@@ -117,6 +119,7 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(SaveBehavior<
 
 // Repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
 
 var app = builder.Build();
 

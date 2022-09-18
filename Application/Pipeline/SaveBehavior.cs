@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Domain.Interfaces;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Application.Pipeline
 {
     public class SaveBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
-        private readonly IUnitWork unitWork;
+        private readonly IUnitOfWork uow;
 
-        public SaveBehavior(IUnitWork unitWork)
+        public SaveBehavior(IUnitOfWork uow)
         {
-            this.unitWork = unitWork;
+            this.uow = uow;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
@@ -22,7 +23,7 @@ namespace Application.Pipeline
 
             if (typeof(TRequest).Name.EndsWith("Command"))
             {
-                await unitWork.SaveChangesAsync();
+                await uow.SaveChangesAsync();
             }
 
             return response;

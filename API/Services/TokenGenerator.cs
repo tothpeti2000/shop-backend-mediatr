@@ -1,11 +1,12 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Application.Services;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
 namespace API
 {
-    public class TokenGenerator
+    public class TokenGenerator: ITokenGenerator
     {
         private readonly IConfiguration configuration;
 
