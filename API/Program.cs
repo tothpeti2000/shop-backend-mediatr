@@ -6,6 +6,7 @@ using DAL.Exceptions;
 using DAL.Repositories;
 using Domain.Interfaces;
 using Domain.Models;
+using Domain.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
@@ -16,8 +17,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using NSwag;
-using NSwag.Generation.Processors.Security;
 using System.Reflection;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -82,18 +81,35 @@ builder.Services.AddAuthentication(x =>
 });
 
 // Swagger
-builder.Services.AddSwaggerDocument(document =>
+builder.Services.AddSwaggerGen(option =>
 {
-    document.AddSecurity("JWT", Enumerable.Empty<string>(), new NSwag.OpenApiSecurityScheme
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop API", Version = "v1" });
+    option.CustomOperationIds(e => e.ActionDescriptor.RouteValues["action"]);
+
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Type = OpenApiSecuritySchemeType.ApiKey,
+        In = ParameterLocation.Header,
+        Description = "Enter a valid JWT token",
         Name = "Authorization",
-        In = OpenApiSecurityApiKeyLocation.Header,
-        Description = "Bearer {your JWT token}"
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
     });
 
-    document.OperationProcessors.Add(
-        new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 // CORS
@@ -120,6 +136,8 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(SaveBehavior<
 // Repositories
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+//builder.Services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
@@ -132,8 +150,8 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseOpenApi();
-    app.UseSwaggerUi3();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

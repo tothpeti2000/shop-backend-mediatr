@@ -15,14 +15,14 @@ namespace Application.Features.Auth
     {
         public LoginUserValidator()
         {
-            RuleFor(credentials => credentials.Email).NotEmpty().EmailAddress();
+            RuleFor(credentials => credentials.UserName).NotEmpty();
             RuleFor(credentials => credentials.Password).NotEmpty();
         }
     }
 
     public class LoginUserRequest: IRequest<LoginUserResponse>
     {
-        public string Email { get; set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
     }
 
@@ -44,7 +44,13 @@ namespace Application.Features.Auth
 
         public async Task<LoginUserResponse> Handle(LoginUserRequest request, CancellationToken cancellationToken)
         {
-            var user = await userManager.FindByEmailAsync(request.Email) ?? throw new ArgumentException("User not found by the given email address");
+            var user = await userManager.FindByNameAsync(request.UserName);
+
+            if (user == null)
+            {
+                throw new InvalidOperationException("User not found by the given username");
+            }
+
             var passwordValid = await userManager.CheckPasswordAsync(user, request.Password);
 
             if (!passwordValid)
