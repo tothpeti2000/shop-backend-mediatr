@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Application.Features.Product;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,5 +9,23 @@ namespace API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly IMediator mediator;
+
+        public ProductsController(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<GetProductsResponse> GetProducts([FromQuery] GetProductsRequest request)
+        {
+            return await mediator.Send(request);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<GetProductByIdResponse> GetProductById(Guid id)
+        {
+            return await mediator.Send(new GetProductByIdRequest(id));
+        }
     }
 }

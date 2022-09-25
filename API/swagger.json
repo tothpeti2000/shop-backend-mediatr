@@ -91,24 +91,33 @@
         "tags": [
           "Products"
         ],
-        "operationId": "GetAllProducts",
+        "operationId": "GetProducts",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/GetProductsRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllProductsResponse"
+                  "$ref": "#/components/schemas/GetProductsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllProductsResponse"
+                  "$ref": "#/components/schemas/GetProductsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetAllProductsResponse"
+                  "$ref": "#/components/schemas/GetProductsResponse"
                 }
               }
             }
@@ -160,41 +169,61 @@
   },
   "components": {
     "schemas": {
-      "Category": {
+      "GetProductByIdResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "name": {
             "type": "string",
             "nullable": true
           },
-          "imgUrl": {
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
             "type": "string",
             "nullable": true
           },
-          "parentCategory": {
-            "$ref": "#/components/schemas/Category"
+          "averageRating": {
+            "type": "number",
+            "format": "double"
+          },
+          "imgUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "GetAllProductsResponse": {
+      "GetProductsRequest": {
         "type": "object",
-        "properties": {
-          "response": {
-            "$ref": "#/components/schemas/ProductPagedItems"
-          }
-        },
         "additionalProperties": false
       },
-      "GetProductByIdResponse": {
+      "GetProductsResponse": {
         "type": "object",
         "properties": {
-          "product": {
-            "$ref": "#/components/schemas/Product"
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductDto"
+            },
+            "nullable": true
+          },
+          "currentPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalItems": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -223,13 +252,9 @@
         },
         "additionalProperties": false
       },
-      "Product": {
+      "ProductDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "name": {
             "type": "string",
             "nullable": true
@@ -242,45 +267,9 @@
             "type": "integer",
             "format": "int32"
           },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "averageRating": {
-            "type": "number",
-            "format": "double"
-          },
           "imgUrl": {
             "type": "string",
             "nullable": true
-          },
-          "category": {
-            "$ref": "#/components/schemas/Category"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProductPagedItems": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Product"
-            },
-            "nullable": true
-          },
-          "currentPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalItems": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

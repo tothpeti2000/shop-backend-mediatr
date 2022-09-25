@@ -8,7 +8,7 @@ namespace DAL.Exceptions
 {
     public class EntityNotFoundException: Exception
     {
-        public EntityNotFoundException(Type entityType, Guid id)
-            : base($"No {entityType.Name} was found in the DB with ID {id}") { }
+        public EntityNotFoundException(Guid id)
+            : base($"Entity with ID {id} wasn't found") { }
     }
 }
