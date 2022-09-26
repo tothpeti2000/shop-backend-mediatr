@@ -11,5 +11,6 @@ namespace Domain.Repositories
     {
         public Task<List<Product>> GetByQueryAsync(CancellationToken cancellationToken);
         public Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+        public Task<(double, double)> GetPriceRangeAsync(CancellationToken cancellationToken);
     }
 }

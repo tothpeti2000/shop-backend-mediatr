@@ -29,5 +29,16 @@ namespace DAL.Repositories
             return await db.Products
                 .FirstOrDefaultAsync(product => product.Id == id, cancellationToken);
         }
+
+        public async Task<(double, double)> GetPriceRangeAsync(CancellationToken cancellationToken)
+        {
+            var prices = db.Products
+                .Select(product => product.Price);
+
+            var minPrice = await prices.MinAsync(cancellationToken);
+            var maxPrice = await prices.MaxAsync(cancellationToken);
+
+            return (minPrice, maxPrice);
+        }
     }
 }

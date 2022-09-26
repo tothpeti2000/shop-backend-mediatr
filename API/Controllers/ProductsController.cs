@@ -27,5 +27,11 @@ namespace API.Controllers
         {
             return await mediator.Send(new GetProductByIdRequest(id));
         }
+
+        [HttpGet("price-range")]
+        public async Task<GetPriceRangeResponse> GetPriceRange()
+        {
+            return await mediator.Send(new GetPriceRangeRequest());
+        }
     }
 }
