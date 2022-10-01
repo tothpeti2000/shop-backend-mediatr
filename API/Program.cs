@@ -133,11 +133,12 @@ builder.Services.AddCors(options =>
 builder.Services.AddMediatR(Assembly.Load("Application"));
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(SaveBehavior<,>));
 
-// Repositories
+// Repositories, Services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
-//builder.Services.AddScoped(typeof(ICrudRepository<>), typeof(CrudRepository<>));
+builder.Services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 var app = builder.Build();
 

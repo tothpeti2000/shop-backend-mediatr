@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Models
+namespace Domain.Paging
 {
-    public class PagedItems<T>
+    public class PagedList<T>
     {
-        public T[] Items { get; set; }
+        public List<T> Items { get; set; }
 
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }

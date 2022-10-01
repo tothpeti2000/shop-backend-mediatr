@@ -1,5 +1,6 @@
 ﻿using Application.Features.Product;
 using AutoMapper;
+using Domain.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Application.Mapping.Profiles
         public ProductProfile()
         {
             CreateMap<Domain.Models.Product, GetProductsResponse.ProductDto>();
+            CreateMap<PagedList<Domain.Models.Product>, GetProductsResponse>();
             CreateMap<Domain.Models.Product, GetProductByIdResponse>();
         }
     }

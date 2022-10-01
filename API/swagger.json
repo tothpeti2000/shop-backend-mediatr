@@ -86,6 +86,66 @@
         }
       }
     },
+    "/api/Categories": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "GetAllCategories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllCategoriesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllCategoriesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAllCategoriesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Categories/top": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "GetTopCategories",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTopCategoriesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTopCategoriesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetTopCategoriesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Products": {
       "get": {
         "tags": [
@@ -94,10 +154,26 @@
         "operationId": "GetProducts",
         "parameters": [
           {
-            "name": "request",
+            "name": "Name",
             "in": "query",
             "schema": {
-              "$ref": "#/components/schemas/GetProductsRequest"
+              "type": "string"
+            }
+          },
+          {
+            "name": "PagingOptions.Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PagingOptions.Count",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -199,6 +275,38 @@
   },
   "components": {
     "schemas": {
+      "CategoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentCategoryId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetAllCategoriesResponse": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CategoryDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetPriceRangeResponse": {
         "type": "object",
         "properties": {
@@ -243,14 +351,10 @@
         },
         "additionalProperties": false
       },
-      "GetProductsRequest": {
-        "type": "object",
-        "additionalProperties": false
-      },
       "GetProductsResponse": {
         "type": "object",
         "properties": {
-          "products": {
+          "items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ProductDto"
@@ -268,6 +372,19 @@
           "totalItems": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetTopCategoriesResponse": {
+        "type": "object",
+        "properties": {
+          "topCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopCategory"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -299,6 +416,10 @@
       "ProductDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "name": {
             "type": "string",
             "nullable": true
@@ -330,6 +451,24 @@
             "nullable": true
           },
           "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TopCategory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "imgUrl": {
             "type": "string",
             "nullable": true
           }

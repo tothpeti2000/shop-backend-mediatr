@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository: IRepositoryBase<Category>
     {
+        public Task<List<Category>> GetTopCategories(CancellationToken cancellationToken);
     }
 }

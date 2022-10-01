@@ -17,21 +17,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<GetProductsResponse> GetProducts([FromQuery] GetProductsRequest request)
+        public async Task<GetProductsResponse> GetProducts([FromQuery] GetProductsRequest request, CancellationToken cancellationToken)
         {
-            return await mediator.Send(request);
+            return await mediator.Send(request, cancellationToken);
         }
 
         [HttpGet("{id}")]
-        public async Task<GetProductByIdResponse> GetProductById(Guid id)
+        public async Task<GetProductByIdResponse> GetProductById(Guid id, CancellationToken cancellationToken)
         {
-            return await mediator.Send(new GetProductByIdRequest(id));
+            return await mediator.Send(new GetProductByIdRequest { Id = id }, cancellationToken);
         }
 
         [HttpGet("price-range")]
-        public async Task<GetPriceRangeResponse> GetPriceRange()
+        public async Task<GetPriceRangeResponse> GetPriceRange(CancellationToken cancellationToken)
         {
-            return await mediator.Send(new GetPriceRangeRequest());
+            return await mediator.Send(new GetPriceRangeRequest(), cancellationToken);
         }
     }
 }

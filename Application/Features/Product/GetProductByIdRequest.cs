@@ -15,11 +15,6 @@ namespace Application.Features.Product
     public class GetProductByIdRequest : IRequest<GetProductByIdResponse>
     {
         public Guid Id { get; set; }
-
-        public GetProductByIdRequest(Guid id)
-        {
-            Id = id;
-        }
     }
 
     public class GetProductByIdResponse
