@@ -1,8 +1,9 @@
 ﻿using Application.Mapping;
 using Application.Mapping.Profiles;
-using Domain.Enums;
 using Domain.Paging;
+using Domain.QueryStringParams;
 using Domain.Repositories;
+using FluentValidation;
 using LinqKit;
 using MediatR;
 using System;
@@ -13,12 +14,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Product
 {
-    public class GetProductsRequest: IRequest<GetProductsResponse>
+    public class GetProductsRequest: QueryStringParams, IRequest<GetProductsResponse>
     {
         public string? Name { get; set; }
-        public PagingOptions? PagingOptions { get; set; }
-        //public double FromPrice { get; set; }
-        //public double ToPrice { get; set; }
+        public double FromPrice { get; set; }
+        public double ToPrice { get; set; }
     }
 
     public class GetProductsResponse: PagedList<GetProductsResponse.ProductDto>
@@ -52,9 +52,9 @@ namespace Application.Features.Product
                 filter = filter.And(p => p.Name.ToUpper().Contains(request.Name.ToUpper()));
             }
 
-            var pagingOptions = request.PagingOptions ?? new PagingOptions();
+            filter = filter.And(p => p.Price >= request.FromPrice && p.Price <= request.ToPrice);
 
-            var pagedProducts = await repository.GetAsync(filter, pagingOptions, cancellationToken);
+            var pagedProducts = await repository.GetAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
 
             return mapper.Map<PagedList<Domain.Models.Product>, GetProductsResponse>(pagedProducts);
         }

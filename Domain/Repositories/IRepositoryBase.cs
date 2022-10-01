@@ -11,7 +11,7 @@ namespace Domain.Repositories
     public interface IRepositoryBase<T>
     {
         public Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
-        public Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, PagingOptions pagingOptions, CancellationToken cancellationToken);
+        public Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken);
         public Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken); 
     }
 }

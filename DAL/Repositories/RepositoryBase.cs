@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DAL.Helpers;
+using Domain.Models;
 using Domain.Paging;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace DAL.Repositories
     public class RepositoryBase<T> : IRepositoryBase<T> where T : EntityBase
     {
         protected DbSet<T> Entities { get; set; }
+        protected SortHelper<T> sortHelper = new();
 
         public RepositoryBase(DbSet<T> entities)
         {
@@ -25,23 +27,25 @@ namespace DAL.Repositories
             return await Entities.ToListAsync(cancellationToken);
         }
 
-        public async Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, PagingOptions pagingOptions, CancellationToken cancellationToken)
+        public async Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken)
         {
-            var matches = Entities
+            var filtered = Entities
                 .Where(filter);
 
-            var totalCount = await matches.CountAsync(cancellationToken);
-            var totalPages = (int)Math.Ceiling((double)totalCount / pagingOptions.Count);
+            var sorted = sortHelper.ApplySort(filtered, orderByString);
 
-            var entities = await matches
-                .Skip((pagingOptions.Page - 1) * pagingOptions.Count)
-                .Take(pagingOptions.Count)
+            var totalCount = await sorted.CountAsync(cancellationToken);
+            var totalPages = (int)Math.Ceiling((double)totalCount / count);
+
+            var entities = await sorted
+                .Skip((page - 1) * count)
+                .Take(count)
                 .ToListAsync(cancellationToken);
 
             return new PagedList<T>
             {
                 Items = entities,
-                CurrentPage = pagingOptions.Page,
+                CurrentPage = page,
                 TotalPages = totalPages,
                 TotalItems = totalCount
             };

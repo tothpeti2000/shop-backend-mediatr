@@ -161,7 +161,23 @@
             }
           },
           {
-            "name": "PagingOptions.Page",
+            "name": "FromPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "ToPrice",
+            "in": "query",
+            "schema": {
+              "type": "number",
+              "format": "double"
+            }
+          },
+          {
+            "name": "Page",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -169,11 +185,18 @@
             }
           },
           {
-            "name": "PagingOptions.Count",
+            "name": "Count",
             "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
             }
           }
         ],
