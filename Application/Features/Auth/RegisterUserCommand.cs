@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Domain.Repositories;
 using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -30,10 +31,12 @@ namespace Application.Features.Auth
     public class RegisterUserCommandHandler: IRequestHandler<RegisterUserCommand, Unit>
     {
         private readonly UserManager<User> userManager;
+        private readonly ICartRepository cartRepository;
 
-        public RegisterUserCommandHandler(UserManager<User> userManager)
+        public RegisterUserCommandHandler(UserManager<User> userManager, ICartRepository cartRepository)
         {
             this.userManager = userManager;
+            this.cartRepository = cartRepository;
         }
 
         public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -57,6 +60,8 @@ namespace Application.Features.Auth
 
                 throw new InvalidOperationException(errors);
             }
+
+            await cartRepository.CreateCartForUserAsync(user.Id, cancellationToken);
 
             return Unit.Value;
         }

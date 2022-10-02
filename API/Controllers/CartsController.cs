@@ -1,5 +1,6 @@
 ﻿using Application.Features.Cart;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -18,6 +19,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task AddItemToCart(AddItemToCartCommand command, CancellationToken cancellationToken)
         {   
             await mediator.Send(command, cancellationToken);

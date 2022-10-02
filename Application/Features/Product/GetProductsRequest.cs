@@ -17,8 +17,8 @@ namespace Application.Features.Product
     public class GetProductsRequest: QueryStringParams, IRequest<GetProductsResponse>
     {
         public string? Name { get; set; }
-        public double FromPrice { get; set; }
-        public double ToPrice { get; set; }
+        public double? FromPrice { get; set; }
+        public double? ToPrice { get; set; }
         public List<Guid>? CategoryIds { get; set; }
     }
 
@@ -53,7 +53,15 @@ namespace Application.Features.Product
                 filter = filter.And(p => p.Name.ToUpper().Contains(request.Name.ToUpper()));
             }
 
-            filter = filter.And(p => p.Price >= request.FromPrice && p.Price <= request.ToPrice);
+            if (request.FromPrice != null)
+            {
+                filter = filter.And(p => p.Price >= request.FromPrice);
+            }
+
+            if (request.ToPrice != null)
+            {
+                filter = filter.And(p => p.Price <= request.ToPrice);
+            }
 
             filter = filter.And(GetCategoryFilter(request.CategoryIds));
 

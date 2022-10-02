@@ -18,7 +18,7 @@ namespace DAL.Repositories
         public async Task<Guid> GetCartIdOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
             var cart = await Entities
-                .FirstOrDefaultAsync(cart => cart.UserId == userId);
+                .FirstOrDefaultAsync(cart => cart.UserId == userId && !cart.Paid, cancellationToken);
 
             if (cart == null)
             {
@@ -40,6 +40,16 @@ namespace DAL.Repositories
 
             cart.CartItems
                 .Add(cartItem);
+        }
+
+        public async Task CreateCartForUserAsync(Guid userId, CancellationToken cancellationToken)
+        {
+            var cart = new Cart
+            {
+                UserId = userId
+            };
+
+            await Entities.AddAsync(cart, cancellationToken);
         }
     }
 }
