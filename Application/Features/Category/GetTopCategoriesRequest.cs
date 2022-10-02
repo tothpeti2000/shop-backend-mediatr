@@ -37,7 +37,7 @@ namespace Application.Features.Category
 
         public async Task<GetTopCategoriesResponse> Handle(GetTopCategoriesRequest request, CancellationToken cancellationToken)
         {
-            var topCategories = await repository.GetTopCategories(cancellationToken);
+            var topCategories = await repository.GetTopCategoriesAsync(cancellationToken);
 
             return new GetTopCategoriesResponse
             {

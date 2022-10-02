@@ -15,7 +15,7 @@ namespace API
             this.configuration = configuration;
         }
 
-        public string GenerateToken(string userId)
+        public string GenerateToken(Guid userId)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(configuration["JWT:Key"]);
@@ -24,7 +24,7 @@ namespace API
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, userId)
+                    new Claim(ClaimTypes.NameIdentifier, userId.ToString())
                 }),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
             };

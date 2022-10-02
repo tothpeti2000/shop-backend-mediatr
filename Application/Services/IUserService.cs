@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public interface ITokenGenerator
+    public interface IUserService
     {
-        public string GenerateToken(Guid userId);
+        public Guid GetUserIdFromContext();
     }
 }

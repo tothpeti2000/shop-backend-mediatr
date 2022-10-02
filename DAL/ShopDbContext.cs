@@ -1,5 +1,6 @@
 ﻿using DAL.Configurations;
 using Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ShopDbContext: IdentityDbContext<User>
+    public class ShopDbContext: IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options)
         { }
@@ -24,6 +26,8 @@ namespace DAL
 
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new CartItemConfiguration());
+            modelBuilder.ApplyConfiguration(new CartConfiguration());
         }
     }
 }

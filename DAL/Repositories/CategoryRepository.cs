@@ -18,7 +18,7 @@ namespace DAL.Repositories
             this.productRepository = productRepository;
         }
 
-        public async Task<List<Category>> GetTopCategories(CancellationToken cancellationToken)
+        public async Task<List<Category>> GetTopCategoriesAsync(CancellationToken cancellationToken)
         {
             var topCategoryIds = await productRepository.GetTopProductCategoryIdsAsync(cancellationToken);
 

@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace Domain.Models
 {
-    public class User: IdentityUser
+    public class User: IdentityUser<Guid>
     { }
 }

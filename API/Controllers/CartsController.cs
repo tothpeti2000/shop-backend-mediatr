@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Application.Features.Cart;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -7,5 +10,17 @@ namespace API.Controllers
     [ApiController]
     public class CartsController : ControllerBase
     {
+        private readonly IMediator mediator;
+
+        public CartsController(IMediator mediator)
+        {
+            this.mediator = mediator;
+        }
+
+        [HttpPost]
+        public async Task AddItemToCart(AddItemToCartCommand command, CancellationToken cancellationToken)
+        {   
+            await mediator.Send(command, cancellationToken);
+        }
     }
 }

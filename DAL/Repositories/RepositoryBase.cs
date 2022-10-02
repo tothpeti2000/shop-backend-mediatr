@@ -1,4 +1,5 @@
-﻿using DAL.Helpers;
+﻿using DAL.Exceptions;
+using DAL.Helpers;
 using Domain.Models;
 using Domain.Paging;
 using Domain.Repositories;
@@ -51,9 +52,16 @@ namespace DAL.Repositories
             };
         }
 
-        public async Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await Entities.FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
+            var entity = await Entities.FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
+
+            if (entity == null)
+            {
+                throw new EntityNotFoundException(id);
+            }
+
+            return entity;
         }
     }
 }

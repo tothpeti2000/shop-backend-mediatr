@@ -86,6 +86,38 @@
         }
       }
     },
+    "/api/Carts": {
+      "post": {
+        "tags": [
+          "Carts"
+        ],
+        "operationId": "AddItemToCart",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToCartCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToCartCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToCartCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Categories": {
       "get": {
         "tags": [
@@ -309,6 +341,20 @@
   },
   "components": {
     "schemas": {
+      "AddItemToCartCommand": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "CategoryDto": {
         "type": "object",
         "properties": {

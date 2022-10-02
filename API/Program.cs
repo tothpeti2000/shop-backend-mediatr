@@ -1,4 +1,5 @@
 using API;
+using API.Services;
 using Application.Pipeline;
 using Application.Services;
 using DAL;
@@ -136,9 +137,11 @@ builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(SaveBehavior<
 // Repositories, Services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 var app = builder.Build();
 

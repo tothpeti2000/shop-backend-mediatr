@@ -9,6 +9,6 @@ namespace Domain.Repositories
 {
     public interface ICategoryRepository: IRepositoryBase<Category>
     {
-        public Task<List<Category>> GetTopCategories(CancellationToken cancellationToken);
+        public Task<List<Category>> GetTopCategoriesAsync(CancellationToken cancellationToken);
     }
 }
