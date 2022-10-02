@@ -19,6 +19,7 @@ namespace Application.Features.Product
         public string? Name { get; set; }
         public double FromPrice { get; set; }
         public double ToPrice { get; set; }
+        public List<Guid>? CategoryIds { get; set; }
     }
 
     public class GetProductsResponse: PagedList<GetProductsResponse.ProductDto>
@@ -54,9 +55,27 @@ namespace Application.Features.Product
 
             filter = filter.And(p => p.Price >= request.FromPrice && p.Price <= request.ToPrice);
 
+            filter = filter.And(GetCategoryFilter(request.CategoryIds));
+
             var pagedProducts = await repository.GetAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
 
             return mapper.Map<PagedList<Domain.Models.Product>, GetProductsResponse>(pagedProducts);
+        }
+
+        private static ExpressionStarter<Domain.Models.Product> GetCategoryFilter(List<Guid>? categoryIds)
+        {
+            var categoryFilter = PredicateBuilder.New<Domain.Models.Product>(true);
+
+
+            if (categoryIds != null)
+            {
+                foreach (var categoryId in categoryIds)
+                {
+                    categoryFilter = categoryFilter.Or(p => p.CategoryId == categoryId || p.Category.ParentCategoryId == categoryId);
+                }
+            }
+
+            return categoryFilter;
         }
     }
 }
