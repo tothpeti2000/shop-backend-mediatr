@@ -17,8 +17,7 @@ namespace DAL.Configurations
             builder.HasKey(ci => ci.Id);
 
             builder.HasOne(ci => ci.Cart)
-                .WithMany()
-                .HasForeignKey(ci => ci.CartId);
+                .WithMany(c => c.CartItems);
 
             builder.HasOne(ci => ci.Product)
                 .WithMany();

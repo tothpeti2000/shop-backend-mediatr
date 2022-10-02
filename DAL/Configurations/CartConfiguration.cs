@@ -18,9 +18,6 @@ namespace DAL.Configurations
 
             builder.HasOne(c => c.User)
                 .WithMany();
-
-            builder.HasMany(c => c.CartItems)
-                .WithOne();
         }
     }
 }
