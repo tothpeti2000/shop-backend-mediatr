@@ -17,13 +17,7 @@ namespace DAL.Repositories
 
         public async Task<Guid> GetCartIdOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
-            var cart = await Entities
-                .FirstOrDefaultAsync(cart => cart.UserId == userId && !cart.Paid, cancellationToken);
-
-            if (cart == null)
-            {
-                throw new EntityNotFoundException(userId);
-            }
+            var cart = await GetByConditionAsync(cart => cart.UserId == userId && !cart.Paid, cancellationToken);
 
             return cart.Id;
         }
@@ -51,6 +45,14 @@ namespace DAL.Repositories
             };
 
             await Entities.AddAsync(cart, cancellationToken);
+        }
+
+        public async Task UpdateCartItemsAsync(Guid cartId, List<CartItem> cartItems, CancellationToken cancellationToken)
+        {
+            var cart = new Cart();
+            cart = await GetByIdAsync(cartId, cancellationToken, cart => cart.CartItems);
+
+            cart.CartItems = cartItems;
         }
     }
 }

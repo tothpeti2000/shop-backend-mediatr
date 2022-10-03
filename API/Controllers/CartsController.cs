@@ -24,5 +24,12 @@ namespace API.Controllers
         {   
             await mediator.Send(command, cancellationToken);
         }
+
+        [HttpPut]
+        [Authorize]
+        public async Task UpdateCart(UpdateCartCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
+        }
     }
 }

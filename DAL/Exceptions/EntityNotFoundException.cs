@@ -8,7 +8,7 @@ namespace DAL.Exceptions
 {
     public class EntityNotFoundException: Exception
     {
-        public EntityNotFoundException(Guid id)
-            : base($"Entity with ID {id} wasn't found") { }
+        public EntityNotFoundException()
+            : base($"The requested entity wasn't found") { }
     }
 }

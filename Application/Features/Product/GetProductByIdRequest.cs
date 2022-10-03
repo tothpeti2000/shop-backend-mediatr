@@ -43,7 +43,7 @@ namespace Application.Features.Product
 
             if (product == null)
             {
-                throw new EntityNotFoundException(request.Id);
+                throw new EntityNotFoundException();
             }
 
             return mapper.Map<Domain.Models.Product, GetProductByIdResponse>(product);
