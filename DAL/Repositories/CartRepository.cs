@@ -30,7 +30,8 @@ namespace DAL.Repositories
 
         public async Task AddItemToCartAsync(Guid productId, int amount, Guid cartId, CancellationToken cancellationToken)
         {
-            var cart = await GetByIdAsync(cartId, cancellationToken);
+            var cart = new Cart();
+            cart = await GetByIdAsync(cartId, cancellationToken, cart => cart.CartItems);
 
             var cartItem = new CartItem
             {

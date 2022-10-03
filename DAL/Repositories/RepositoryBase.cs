@@ -52,9 +52,16 @@ namespace DAL.Repositories
             };
         }
 
-        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
         {
-            var entity = await Entities.FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
+            IQueryable<T> query = Entities.AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            var entity = await query.FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
 
             if (entity == null)
             {
