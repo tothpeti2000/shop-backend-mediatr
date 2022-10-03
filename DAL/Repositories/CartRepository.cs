@@ -54,5 +54,20 @@ namespace DAL.Repositories
 
             cart.CartItems = cartItems;
         }
+
+        public async Task<List<CartItem>> GetCartItemsAsync(Guid cartId, CancellationToken cancellationToken)
+        {
+            var cart = await Entities
+                .Include(cart => cart.CartItems)
+                .ThenInclude(cartItem => cartItem.Product)
+                .FirstOrDefaultAsync(cart => cart.Id == cartId, cancellationToken);
+
+            if (cart == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+            return cart.CartItems;
+        }
     }
 }

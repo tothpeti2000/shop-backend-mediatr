@@ -86,7 +86,7 @@
         }
       }
     },
-    "/api/Carts": {
+    "/api/Carts/add-item": {
       "post": {
         "tags": [
           "Carts"
@@ -116,7 +116,9 @@
             "description": "Success"
           }
         }
-      },
+      }
+    },
+    "/api/Carts/update": {
       "put": {
         "tags": [
           "Carts"
@@ -144,6 +146,36 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Carts/items": {
+      "get": {
+        "tags": [
+          "Carts"
+        ],
+        "operationId": "GetCartItems",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCartItemsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCartItemsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCartItemsResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -385,6 +417,28 @@
         },
         "additionalProperties": false
       },
+      "CartItemDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "imgUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "CategoryDto": {
         "type": "object",
         "properties": {
@@ -411,6 +465,19 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CategoryDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCartItemsResponse": {
+        "type": "object",
+        "properties": {
+          "cartItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CartItemDto"
             },
             "nullable": true
           }

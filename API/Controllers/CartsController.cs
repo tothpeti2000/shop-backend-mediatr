@@ -18,18 +18,25 @@ namespace API.Controllers
             this.mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("add-item")]
         [Authorize]
         public async Task AddItemToCart(AddItemToCartCommand command, CancellationToken cancellationToken)
         {   
             await mediator.Send(command, cancellationToken);
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         [Authorize]
         public async Task UpdateCart(UpdateCartCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
+        }
+
+        [HttpGet("items")]
+        [Authorize]
+        public async Task<GetCartItemsResponse> GetCartItems(CancellationToken cancellationToken)
+        {
+            return await mediator.Send(new GetCartItemsRequest(), cancellationToken);
         }
     }
 }
