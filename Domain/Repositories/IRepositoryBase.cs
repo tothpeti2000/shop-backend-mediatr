@@ -14,5 +14,6 @@ namespace Domain.Repositories
         public Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken);
         public Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes);
         public Task<T> GetByConditionAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes);
+        public Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken);
     }
 }

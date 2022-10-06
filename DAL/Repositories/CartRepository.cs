@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DAL.Repositories
@@ -14,28 +15,6 @@ namespace DAL.Repositories
     {
         public CartRepository(ShopDbContext db) : base(db.Carts)
         { }
-
-        public async Task<Guid> GetCartIdOfUserAsync(Guid userId, CancellationToken cancellationToken)
-        {
-            var cart = await GetByConditionAsync(cart => cart.UserId == userId && !cart.Paid, cancellationToken);
-
-            return cart.Id;
-        }
-
-        public async Task AddItemToCartAsync(Guid productId, int amount, Guid cartId, CancellationToken cancellationToken)
-        {
-            var cart = new Cart();
-            cart = await GetByIdAsync(cartId, cancellationToken, cart => cart.CartItems);
-
-            var cartItem = new CartItem
-            {
-                ProductId = productId,
-                Amount = amount,
-            };
-
-            cart.CartItems
-                .Add(cartItem);
-        }
 
         public async Task CreateCartForUserAsync(Guid userId, CancellationToken cancellationToken)
         {
@@ -47,12 +26,9 @@ namespace DAL.Repositories
             await Entities.AddAsync(cart, cancellationToken);
         }
 
-        public async Task UpdateCartItemsAsync(Guid cartId, List<CartItem> cartItems, CancellationToken cancellationToken)
+        public async Task<Cart> GetCartOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
-            var cart = new Cart();
-            cart = await GetByIdAsync(cartId, cancellationToken, cart => cart.CartItems);
-
-            cart.CartItems = cartItems;
+            return await GetByConditionAsync(cart => cart.UserId == userId && !cart.Paid, cancellationToken, cart => cart.CartItems);
         }
 
         public async Task<List<CartItem>> GetCartItemsAsync(Guid cartId, CancellationToken cancellationToken)

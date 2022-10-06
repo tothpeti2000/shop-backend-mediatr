@@ -8,6 +8,7 @@ using System.Security.Claims;
 namespace API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class CartsController : ControllerBase
     {
@@ -19,24 +20,33 @@ namespace API.Controllers
         }
 
         [HttpPost("add-item")]
-        [Authorize]
         public async Task AddItemToCart(AddItemToCartCommand command, CancellationToken cancellationToken)
         {   
             await mediator.Send(command, cancellationToken);
         }
 
-        [HttpPut("update")]
-        [Authorize]
-        public async Task UpdateCart(UpdateCartCommand command, CancellationToken cancellationToken)
+        [HttpGet("items")]
+        public async Task<GetCartItemsResponse> GetCartItems(CancellationToken cancellationToken)
+        {
+            return await mediator.Send(new GetCartItemsRequest(), cancellationToken);
+        }
+
+        [HttpPut("update-item")]
+        public async Task UpdateCartItemAmount(UpdateCartItemAmountCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
         }
 
-        [HttpGet("items")]
-        [Authorize]
-        public async Task<GetCartItemsResponse> GetCartItems(CancellationToken cancellationToken)
+        [HttpPut("delete-item")]
+        public async Task DeleteCartItem(DeleteCartItemCommand command, CancellationToken cancellationToken)
         {
-            return await mediator.Send(new GetCartItemsRequest(), cancellationToken);
+            await mediator.Send(command, cancellationToken);
+        }
+
+        [HttpPut("clear")]
+        public async Task ClearCart(CancellationToken cancellationToken)
+        {
+            await mediator.Send(new ClearCartCommand(), cancellationToken);
         }
     }
 }

@@ -20,6 +20,8 @@ namespace Application.Features.Cart
     {
         public class CartItemDto
         {
+            public Guid Id { get; set; }
+            public Guid ProductId { get; set; }
             public string Name { get; set; }
             public double Price { get; set; }
             public string? ImgUrl { get; set; }
@@ -44,8 +46,8 @@ namespace Application.Features.Cart
         public async Task<GetCartItemsResponse> Handle(GetCartItemsRequest request, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
-            var cartId = await repository.GetCartIdOfUserAsync(userId, cancellationToken);
-            var cartItems = await repository.GetCartItemsAsync(cartId, cancellationToken);
+            var cart = await repository.GetCartOfUserAsync(userId, cancellationToken);
+            var cartItems = await repository.GetCartItemsAsync(cart.Id, cancellationToken);
 
             return new GetCartItemsResponse
             {

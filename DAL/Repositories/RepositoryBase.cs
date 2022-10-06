@@ -52,25 +52,6 @@ namespace DAL.Repositories
             };
         }
 
-        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
-        {
-            IQueryable<T> query = Entities.AsQueryable();
-
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-
-            var entity = await query.FirstOrDefaultAsync(item => item.Id == id, cancellationToken);
-
-            if (entity == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
-            return entity;
-        }
-
         public async Task<T> GetByConditionAsync(Expression<Func<T, bool>> condition, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Entities.AsQueryable();
@@ -88,6 +69,17 @@ namespace DAL.Repositories
             }
 
             return entity;
+        }
+
+        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
+        {
+            return await GetByConditionAsync(item => item.Id == id, cancellationToken, includes);
+        }
+
+        public async Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var entity = await GetByIdAsync(id, cancellationToken);
+            Entities.Remove(entity);
         }
     }
 }

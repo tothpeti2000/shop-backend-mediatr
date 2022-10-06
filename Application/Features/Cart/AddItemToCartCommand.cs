@@ -1,4 +1,7 @@
-﻿using Application.Services;
+﻿using Application.Mapping;
+using Application.Mapping.Profiles;
+using Application.Services;
+using Domain.Models;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;
@@ -28,6 +31,7 @@ namespace Application.Features.Cart
     {
         private readonly ICartRepository repository;
         private readonly IUserService userService;
+        private readonly Mapper<CartProfile> mapper = new();
 
         public AddItemToCartCommandHandler(ICartRepository repository, IUserService userService)
         {
@@ -38,9 +42,11 @@ namespace Application.Features.Cart
         public async Task<Unit> Handle(AddItemToCartCommand request, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
-            var cartId = await repository.GetCartIdOfUserAsync(userId, cancellationToken);
+            var cart = await repository.GetCartOfUserAsync(userId, cancellationToken);
+            var cartItem = mapper.Map<AddItemToCartCommand, CartItem>(request);
 
-            await repository.AddItemToCartAsync(request.ProductId, request.Amount, cartId, cancellationToken);
+            cart.CartItems
+                .Add(cartItem);
 
             return Unit.Value;
         }

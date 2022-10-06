@@ -118,38 +118,6 @@
         }
       }
     },
-    "/api/Carts/update": {
-      "put": {
-        "tags": [
-          "Carts"
-        ],
-        "operationId": "UpdateCart",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartCommand"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartCommand"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateCartCommand"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/api/Carts/items": {
       "get": {
         "tags": [
@@ -176,6 +144,83 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/Carts/update-item": {
+      "put": {
+        "tags": [
+          "Carts"
+        ],
+        "operationId": "UpdateCartItemAmount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCartItemAmountCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCartItemAmountCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCartItemAmountCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Carts/delete-item": {
+      "put": {
+        "tags": [
+          "Carts"
+        ],
+        "operationId": "DeleteCartItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCartItemCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCartItemCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteCartItemCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Carts/clear": {
+      "put": {
+        "tags": [
+          "Carts"
+        ],
+        "operationId": "ClearCart",
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -420,6 +465,14 @@
       "CartItemDto": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "name": {
             "type": "string",
             "nullable": true
@@ -454,6 +507,16 @@
             "type": "string",
             "format": "uuid",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteCartItemCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -652,15 +715,16 @@
         },
         "additionalProperties": false
       },
-      "UpdateCartCommand": {
+      "UpdateCartItemAmountCommand": {
         "type": "object",
         "properties": {
-          "cartItems": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/AddItemToCartCommand"
-            },
-            "nullable": true
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
