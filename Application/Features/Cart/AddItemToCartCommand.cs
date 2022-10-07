@@ -13,18 +13,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Cart
 {
-    public class AddItemToCartValidator : AbstractValidator<AddItemToCartCommand>
-    {
-        public AddItemToCartValidator()
-        {
-            RuleFor(item => item.Amount).GreaterThanOrEqualTo(1);
-        }
-    }
-
     public class AddItemToCartCommand : IRequest
     {
         public Guid ProductId { get; set; }
-        public int Amount { get; set; }
     }
 
     public class AddItemToCartCommandHandler : IRequestHandler<AddItemToCartCommand, Unit>
@@ -43,10 +34,19 @@ namespace Application.Features.Cart
         {
             var userId = userService.GetUserIdFromContext();
             var cart = await repository.GetCartOfUserAsync(userId, cancellationToken);
-            var cartItem = mapper.Map<AddItemToCartCommand, CartItem>(request);
 
-            cart.CartItems
-                .Add(cartItem);
+            var cartItem = cart.CartItems
+                .FirstOrDefault(ci => ci.ProductId == request.ProductId);
+
+            if (cartItem == null)
+            {
+                cartItem = mapper.Map<AddItemToCartCommand, CartItem>(request);
+
+                cart.CartItems
+                    .Add(cartItem);
+            }
+
+            cartItem.Amount++;
 
             return Unit.Value;
         }

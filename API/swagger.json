@@ -454,10 +454,6 @@
           "productId": {
             "type": "string",
             "format": "uuid"
-          },
-          "amount": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
