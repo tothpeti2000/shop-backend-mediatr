@@ -19,9 +19,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task CreateSharedCart(CreateSharedCartCommand command, CancellationToken cancellationToken)
+        public async Task<CreateSharedCartResponse> CreateSharedCart(CreateSharedCartCommand command, CancellationToken cancellationToken)
         {
-            await mediator.Send(command, cancellationToken);
+            return await mediator.Send(command, cancellationToken);
         }
 
         [HttpGet]

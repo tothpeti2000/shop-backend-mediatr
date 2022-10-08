@@ -23,13 +23,18 @@ namespace Application.Features.SharedCart
         }
     }
 
-    public class CreateSharedCartCommand : IRequest
+    public class CreateSharedCartCommand : IRequest<CreateSharedCartResponse>
     {
         public string Name { get; set; }
         public string? Description { get; set; }
     }
 
-    public class CreateSharedCartCommandHandler : IRequestHandler<CreateSharedCartCommand, Unit>
+    public class CreateSharedCartResponse
+    {
+        public Guid Id { get; set; }
+    }
+
+    public class CreateSharedCartCommandHandler : IRequestHandler<CreateSharedCartCommand, CreateSharedCartResponse>
     {
         private readonly ISharedCartRepository repository;
         private readonly IUserService userService;
@@ -42,7 +47,7 @@ namespace Application.Features.SharedCart
             this.userManager = userManager;
         }
 
-        public async Task<Unit> Handle(CreateSharedCartCommand command, CancellationToken cancellationToken)
+        public async Task<CreateSharedCartResponse> Handle(CreateSharedCartCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
             var user = await userManager.FindByIdAsync(userId.ToString());
@@ -56,7 +61,10 @@ namespace Application.Features.SharedCart
 
             await repository.AddAsync(cart, cancellationToken);
 
-            return Unit.Value;
+            return new CreateSharedCartResponse
+            {
+                Id = cart.Id
+            };
         }
     }
 
