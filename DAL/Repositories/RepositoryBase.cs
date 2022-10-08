@@ -23,14 +23,44 @@ namespace DAL.Repositories
             Entities = entities;
         }
 
+        public async Task AddAsync(T entity, CancellationToken cancellationToken)
+        {
+            await Entities.AddAsync(entity, cancellationToken);
+        }
+
         public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await Entities.ToListAsync(cancellationToken);
         }
 
-        public async Task<PagedList<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken)
+        public async Task<List<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
         {
-            var filtered = Entities
+            IQueryable<T> query = Entities.AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            var filtered = query
+                .Where(filter);
+
+            var sorted = sortHelper.ApplySort(filtered, orderByString);
+
+            return await sorted
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<PagedList<T>> GetPagedAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = Entities.AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            var filtered = query
                 .Where(filter);
 
             var sorted = sortHelper.ApplySort(filtered, orderByString);

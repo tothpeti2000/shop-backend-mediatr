@@ -8,6 +8,8 @@ namespace Domain.Models
 {
     public class SharedCart: EntityBase
     {
+        public string Name { get; set; }
+        public string? Description { get; set; }
         public List<User> Users { get; set; }
         public List<SharedCartItem> CartItems { get; set; }
         public bool Paid { get; set; }

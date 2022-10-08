@@ -4,6 +4,7 @@ using DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(ShopDbContext))]
-    partial class ShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221008122610_SharedCartName")]
+    partial class SharedCartName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,121 +92,121 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f"),
+                            Id = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4"),
                             Name = "Toy"
                         },
                         new
                         {
-                            Id = new Guid("63009118-1d90-4680-a8d2-c783350d2793"),
+                            Id = new Guid("8455a56c-3ac1-45fb-8f27-78654a4bde46"),
                             Name = "Play house"
                         },
                         new
                         {
-                            Id = new Guid("5122c69e-cb54-4f7d-9326-69af1a887ee4"),
+                            Id = new Guid("c7d35a62-61c4-4585-b1db-0f75db1aff8a"),
                             Name = "Baby toy",
-                            ParentCategoryId = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f")
+                            ParentCategoryId = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4")
                         },
                         new
                         {
-                            Id = new Guid("5bf23d2f-5fe7-4475-9bb8-edf44e434afd"),
+                            Id = new Guid("c917048a-73eb-49ce-a03e-1daba2b90814"),
                             Name = "Construction toy",
-                            ParentCategoryId = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f")
+                            ParentCategoryId = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4")
                         },
                         new
                         {
-                            Id = new Guid("2a14cb4c-bc64-4986-ba87-6b7072554ed8"),
+                            Id = new Guid("15f3cdb1-29a1-4cf6-9223-5ddb9a88dbf9"),
                             Name = "Wooden toy",
-                            ParentCategoryId = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f")
+                            ParentCategoryId = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4")
                         },
                         new
                         {
-                            Id = new Guid("24700602-45dd-4dd5-8537-4fe32d9a347a"),
+                            Id = new Guid("741d83c1-5162-40b8-bced-12878974af08"),
                             Name = "Plush figure",
-                            ParentCategoryId = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f")
+                            ParentCategoryId = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4")
                         },
                         new
                         {
-                            Id = new Guid("c3449edc-7420-476d-a79a-82dca50028ac"),
+                            Id = new Guid("a4f186fa-7f98-4748-b99b-af9a78234141"),
                             Name = "Bicycles",
-                            ParentCategoryId = new Guid("120fc37c-2c81-4791-8c7f-96aec6ff4c0f")
+                            ParentCategoryId = new Guid("b027bc6f-cd5d-43c7-be27-c4d9f51a97a4")
                         },
                         new
                         {
-                            Id = new Guid("c94eb95a-b826-4f7b-ae28-7e46cd6bcc0a"),
+                            Id = new Guid("eb88d50c-8c4d-4c37-bebc-b6202ccec1f7"),
                             Name = "Months 0-6",
-                            ParentCategoryId = new Guid("5122c69e-cb54-4f7d-9326-69af1a887ee4")
+                            ParentCategoryId = new Guid("c7d35a62-61c4-4585-b1db-0f75db1aff8a")
                         },
                         new
                         {
-                            Id = new Guid("0bcf2dd4-13f6-4c1f-83a3-cd48247d0a81"),
+                            Id = new Guid("1bf9f840-9f3e-4fd7-9be4-eb826f99cea9"),
                             Name = "Months 6-18",
-                            ParentCategoryId = new Guid("5122c69e-cb54-4f7d-9326-69af1a887ee4")
+                            ParentCategoryId = new Guid("c7d35a62-61c4-4585-b1db-0f75db1aff8a")
                         },
                         new
                         {
-                            Id = new Guid("5fb6b38b-c7be-42bc-9e63-8219a7c7ae5e"),
+                            Id = new Guid("b32a59ae-61cb-4dc4-a288-865b1a7fb438"),
                             Name = "Months 18-24",
-                            ParentCategoryId = new Guid("5122c69e-cb54-4f7d-9326-69af1a887ee4")
+                            ParentCategoryId = new Guid("c7d35a62-61c4-4585-b1db-0f75db1aff8a")
                         },
                         new
                         {
-                            Id = new Guid("86e6ca67-cba6-47f9-a033-84a8c0f428e7"),
+                            Id = new Guid("1c37b062-383a-40b6-935b-4fa30e64cc70"),
                             Name = "DUPLO",
-                            ParentCategoryId = new Guid("5bf23d2f-5fe7-4475-9bb8-edf44e434afd")
+                            ParentCategoryId = new Guid("c917048a-73eb-49ce-a03e-1daba2b90814")
                         },
                         new
                         {
-                            Id = new Guid("3e7bb3aa-aa45-482c-9a4c-575ba67748cf"),
+                            Id = new Guid("2b205d0c-6380-4ee6-99b0-5069fb680f73"),
                             Name = "LEGO",
-                            ParentCategoryId = new Guid("5bf23d2f-5fe7-4475-9bb8-edf44e434afd")
+                            ParentCategoryId = new Guid("c917048a-73eb-49ce-a03e-1daba2b90814")
                         },
                         new
                         {
-                            Id = new Guid("67c5b3ed-6b66-41fb-b2a4-9777e8b49610"),
+                            Id = new Guid("caf84f69-8384-474f-be49-b40279c6ba89"),
                             Name = "Building items",
-                            ParentCategoryId = new Guid("5bf23d2f-5fe7-4475-9bb8-edf44e434afd")
+                            ParentCategoryId = new Guid("c917048a-73eb-49ce-a03e-1daba2b90814")
                         },
                         new
                         {
-                            Id = new Guid("e631a76c-5852-4449-9376-8b540f7ecadb"),
+                            Id = new Guid("3e6cec7e-89f0-4984-87f3-cf97b8022f25"),
                             Name = "Building blocks",
-                            ParentCategoryId = new Guid("2a14cb4c-bc64-4986-ba87-6b7072554ed8")
+                            ParentCategoryId = new Guid("15f3cdb1-29a1-4cf6-9223-5ddb9a88dbf9")
                         },
                         new
                         {
-                            Id = new Guid("e92a2400-fd6d-4c29-81fb-5ca23ca3dbab"),
+                            Id = new Guid("044ccb51-33a4-40a0-9689-348cd3e9073c"),
                             Name = "Toys for skill development",
-                            ParentCategoryId = new Guid("2a14cb4c-bc64-4986-ba87-6b7072554ed8")
+                            ParentCategoryId = new Guid("15f3cdb1-29a1-4cf6-9223-5ddb9a88dbf9")
                         },
                         new
                         {
-                            Id = new Guid("04139a6f-2332-4674-b30a-311146025400"),
+                            Id = new Guid("5826988c-82ca-4797-867d-627d078e372c"),
                             Name = "Logic toys",
-                            ParentCategoryId = new Guid("2a14cb4c-bc64-4986-ba87-6b7072554ed8")
+                            ParentCategoryId = new Guid("15f3cdb1-29a1-4cf6-9223-5ddb9a88dbf9")
                         },
                         new
                         {
-                            Id = new Guid("9517b41e-b31b-41f2-8d85-73636373b1b3"),
+                            Id = new Guid("dcd3f9c1-3022-4ed6-b350-453b70f1400d"),
                             Name = "Craftwork toys",
-                            ParentCategoryId = new Guid("2a14cb4c-bc64-4986-ba87-6b7072554ed8")
+                            ParentCategoryId = new Guid("15f3cdb1-29a1-4cf6-9223-5ddb9a88dbf9")
                         },
                         new
                         {
-                            Id = new Guid("f91fa7e7-01d0-45d4-a664-480bf2f5a191"),
+                            Id = new Guid("820d4e47-47ed-4969-8c48-23d776d7e373"),
                             Name = "Baby taxis",
-                            ParentCategoryId = new Guid("c3449edc-7420-476d-a79a-82dca50028ac")
+                            ParentCategoryId = new Guid("a4f186fa-7f98-4748-b99b-af9a78234141")
                         },
                         new
                         {
-                            Id = new Guid("5c5bf633-7c51-4bb8-80e9-07e1a42e8b9c"),
+                            Id = new Guid("7d1a03da-a5cb-4430-bbce-110a5a5adcce"),
                             Name = "Motors",
-                            ParentCategoryId = new Guid("c3449edc-7420-476d-a79a-82dca50028ac")
+                            ParentCategoryId = new Guid("a4f186fa-7f98-4748-b99b-af9a78234141")
                         },
                         new
                         {
-                            Id = new Guid("042b3aad-840b-4f45-b005-99d7e7d62757"),
+                            Id = new Guid("3e80a26b-8792-4f46-972b-1e46ea711d8f"),
                             Name = "Tricycle",
-                            ParentCategoryId = new Guid("c3449edc-7420-476d-a79a-82dca50028ac")
+                            ParentCategoryId = new Guid("a4f186fa-7f98-4748-b99b-af9a78234141")
                         });
                 });
 
@@ -246,9 +248,9 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f4360516-d856-4f48-96e5-da89690e206e"),
+                            Id = new Guid("dba02b48-886d-4370-82a1-82c91673a7ae"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("c94eb95a-b826-4f7b-ae28-7e46cd6bcc0a"),
+                            CategoryId = new Guid("eb88d50c-8c4d-4c37-bebc-b6202ccec1f7"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Activity playgim",
                             Price = 18.75,
@@ -256,9 +258,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c60ba20a-9a52-40b7-b69a-eea8c87c85d7"),
+                            Id = new Guid("8505e065-f255-4773-889e-422b6365ccfa"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("c94eb95a-b826-4f7b-ae28-7e46cd6bcc0a"),
+                            CategoryId = new Guid("eb88d50c-8c4d-4c37-bebc-b6202ccec1f7"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Colorful baby book",
                             Price = 4.3499999999999996,
@@ -266,9 +268,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d95855be-5483-43b0-8033-d583d717b704"),
+                            Id = new Guid("7837f857-28e3-4838-8890-3e41ea19fb15"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("0bcf2dd4-13f6-4c1f-83a3-cd48247d0a81"),
+                            CategoryId = new Guid("1bf9f840-9f3e-4fd7-9be4-eb826f99cea9"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Baby telephone",
                             Price = 9.3000000000000007,
@@ -276,9 +278,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f89ba57e-7fc0-44ca-8692-ae106738b369"),
+                            Id = new Guid("dfeab3f8-2b77-4beb-9d47-a4ebefe97ffb"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("5fb6b38b-c7be-42bc-9e63-8219a7c7ae5e"),
+                            CategoryId = new Guid("b32a59ae-61cb-4dc4-a288-865b1a7fb438"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Fisher Price hammer toy",
                             Price = 20.899999999999999,
@@ -286,9 +288,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2eb45e43-1179-4b23-97b5-8d92d394ebcf"),
+                            Id = new Guid("1227dde4-6625-4ef3-9dde-bfdb446186a1"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("e631a76c-5852-4449-9376-8b540f7ecadb"),
+                            CategoryId = new Guid("3e6cec7e-89f0-4984-87f3-cf97b8022f25"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Mega Bloks 24 pcs",
                             Price = 10.800000000000001,
@@ -296,9 +298,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f36d0a56-4462-42aa-9727-48440c401243"),
+                            Id = new Guid("42afc3f4-7780-4b9a-94ff-219b02755d48"),
                             AverageRating = 4.7999999999999998,
-                            CategoryId = new Guid("e631a76c-5852-4449-9376-8b540f7ecadb"),
+                            CategoryId = new Guid("3e6cec7e-89f0-4984-87f3-cf97b8022f25"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Maxi Blocks 56 pcs",
                             Price = 4.6500000000000004,
@@ -306,9 +308,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e462bbc7-14ee-423b-b453-7fa62ef104b9"),
+                            Id = new Guid("a9973460-ef63-4ec1-a92c-dd971a27f4ec"),
                             AverageRating = 4.9000000000000004,
-                            CategoryId = new Guid("e631a76c-5852-4449-9376-8b540f7ecadb"),
+                            CategoryId = new Guid("3e6cec7e-89f0-4984-87f3-cf97b8022f25"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Building Blocks 80 pcs",
                             Price = 10.9,
@@ -316,9 +318,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("af6f5c87-71f9-479d-abb4-a7712e1c10f7"),
+                            Id = new Guid("34a24ed9-0a6b-4856-902f-b8ed794a6ac6"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("67c5b3ed-6b66-41fb-b2a4-9777e8b49610"),
+                            CategoryId = new Guid("caf84f69-8384-474f-be49-b40279c6ba89"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Lego City harbour",
                             Price = 68.900000000000006,
@@ -326,9 +328,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("400e8674-0ab0-40b3-a6a3-81d36aa11420"),
+                            Id = new Guid("04a2545d-45c7-4874-8c27-94c94fdea702"),
                             AverageRating = 3.5,
-                            CategoryId = new Guid("86e6ca67-cba6-47f9-a033-84a8c0f428e7"),
+                            CategoryId = new Guid("1c37b062-383a-40b6-935b-4fa30e64cc70"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Lego Duplo Excavator",
                             Price = 16.0,
@@ -336,9 +338,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("af51a65f-a4c2-4820-a981-a27082348d11"),
+                            Id = new Guid("3d656c82-253f-4d24-98f5-d45d0db895d5"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("63009118-1d90-4680-a8d2-c783350d2793"),
+                            CategoryId = new Guid("8455a56c-3ac1-45fb-8f27-78654a4bde46"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Child supervision for 1 hour",
                             Price = 2.0,
@@ -351,9 +353,6 @@ namespace DAL.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

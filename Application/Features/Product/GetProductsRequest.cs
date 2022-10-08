@@ -65,7 +65,7 @@ namespace Application.Features.Product
 
             filter = filter.And(GetCategoryFilter(request.CategoryIds));
 
-            var pagedProducts = await repository.GetAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
+            var pagedProducts = await repository.GetPagedAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
 
             return mapper.Map<PagedList<Domain.Models.Product>, GetProductsResponse>(pagedProducts);
         }
