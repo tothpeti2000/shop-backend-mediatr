@@ -8,5 +8,7 @@ using System.Threading.Tasks;
 namespace Domain.Models
 {
     public class User: IdentityUser<Guid>
-    { }
+    {
+        public List<SharedCart> SharedCarts { get; set; }
+    }
 }
