@@ -39,15 +39,15 @@ namespace Application.Features.Auth
             this.cartRepository = cartRepository;
         }
 
-        public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             var user = new User
             {
-                UserName = request.UserName,
-                Email = request.Email,
+                UserName = command.UserName,
+                Email = command.Email,
             };
 
-            var result = await userManager.CreateAsync(user, request.Password);
+            var result = await userManager.CreateAsync(user, command.Password);
 
             if (!result.Succeeded)
             {

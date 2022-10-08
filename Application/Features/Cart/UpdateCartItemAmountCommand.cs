@@ -33,9 +33,9 @@ namespace Application.Features.Cart
             this.repository = repository;
         }
 
-        public async Task<Unit> Handle(UpdateCartItemAmountCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateCartItemAmountCommand command, CancellationToken cancellationToken)
         {
-            await repository.UpdateCartItemAmountAsync(request.Id, request.Amount, cancellationToken);
+            await repository.UpdateCartItemAmountAsync(command.Id, command.Amount, cancellationToken);
             return Unit.Value;
         }
     }

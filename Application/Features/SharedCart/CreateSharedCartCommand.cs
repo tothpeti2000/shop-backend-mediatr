@@ -42,15 +42,15 @@ namespace Application.Features.SharedCart
             this.userManager = userManager;
         }
 
-        public async Task<Unit> Handle(CreateSharedCartCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateSharedCartCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
             var user = await userManager.FindByIdAsync(userId.ToString());
 
             var cart = new Domain.Models.SharedCart
             {
-                Name = request.Name,
-                Description = request.Description,
+                Name = command.Name,
+                Description = command.Description,
                 Users = new List<User> { user },
             };
 

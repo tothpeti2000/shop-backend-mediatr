@@ -19,6 +19,7 @@ namespace Application.Features.SharedCart
     { 
         public class SharedCartDto
         {
+            public Guid Id { get; set; }
             public string Name { get; set; }
             public string? Description { get; set; }
             public int MemberCount { get; set; }

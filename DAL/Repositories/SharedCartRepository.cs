@@ -16,7 +16,7 @@ namespace DAL.Repositories
 
         public async Task<List<SharedCart>> GetCartsOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
-            return await GetAsync(c => c.Users.Any(u => u.Id == userId), null, cancellationToken, c => c.Users);
+            return await GetAsync(c => c.Users.Any(u => u.Id == userId) && !c.Paid, null, cancellationToken, c => c.Users);
         }
     }
 }
