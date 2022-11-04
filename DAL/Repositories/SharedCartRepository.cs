@@ -18,5 +18,16 @@ namespace DAL.Repositories
         {
             return await GetAsync(c => c.Users.Any(u => u.Id == userId) && !c.Paid, null, cancellationToken, c => c.Users);
         }
+
+        public async Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken)
+        {
+            var sharedCarts = await GetAllAsync(cancellationToken);
+
+            var passcodes = sharedCarts
+                .Select(c => c.Passcode)
+                .ToList();
+
+            return passcodes;
+        }
     }
 }

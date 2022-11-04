@@ -11,5 +11,6 @@ namespace Domain.Repositories
     public interface ISharedCartRepository: IRepositoryBase<SharedCart>
     {
         public Task<List<SharedCart>> GetCartsOfUserAsync(Guid userId, CancellationToken cancellationToken);
+        public Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken);
     }
 }

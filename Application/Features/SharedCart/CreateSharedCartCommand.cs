@@ -38,12 +38,14 @@ namespace Application.Features.SharedCart
     {
         private readonly ISharedCartRepository repository;
         private readonly IUserService userService;
+        private readonly IPasscodeGenerator passcodeGenerator;
         private readonly UserManager<User> userManager;
 
-        public CreateSharedCartCommandHandler(ISharedCartRepository repository, IUserService userService, UserManager<User> userManager)
+        public CreateSharedCartCommandHandler(ISharedCartRepository repository, IUserService userService, IPasscodeGenerator passcodeGenerator, UserManager<User> userManager)
         {
             this.repository = repository;
             this.userService = userService;
+            this.passcodeGenerator = passcodeGenerator;
             this.userManager = userManager;
         }
 
@@ -51,11 +53,13 @@ namespace Application.Features.SharedCart
         {
             var userId = userService.GetUserIdFromContext();
             var user = await userManager.FindByIdAsync(userId.ToString());
+            var passcode = await passcodeGenerator.GeneratePasscode(8, cancellationToken);
 
             var cart = new Domain.Models.SharedCart
             {
                 Name = command.Name,
                 Description = command.Description,
+                Passcode = passcode,
                 Users = new List<User> { user },
             };
 
