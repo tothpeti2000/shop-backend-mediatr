@@ -67,17 +67,20 @@ namespace Application.Features.Order
         private readonly ICartRepository cartRepository;
         private readonly IProductRepository productRepository;
         private readonly IUserService userService;
+        private readonly IPaymentService paymentService;
         private readonly Mapper<OrderProfile> mapper = new();
 
         public PlaceOrderCommandHandler(
             IOrderRepository orderRepository, 
             ICartRepository cartRepository, 
             IProductRepository productRepository, 
+            IPaymentService paymentService,
             IUserService userService)
         {
             this.orderRepository = orderRepository;
             this.cartRepository = cartRepository;
             this.productRepository = productRepository;
+            this.paymentService = paymentService;
             this.userService = userService;
         }
 
@@ -100,9 +103,15 @@ namespace Application.Features.Order
             }
 
             var order = mapper.Map<PlaceOrderCommand, Domain.Models.Order>(command);
+
+            if (command.PaymentMethod != PaymentMethod.OnDelivery)
+            {
+                await paymentService.StartPaymentTransaction();
+                order.Paid = true;
+            }
+
             cart.Completed = true;
             order.Cart = cart;
-
             await orderRepository.AddAsync(order, cancellationToken);
 
             await cartRepository.CreateCartForUserAsync(userId, cancellationToken);
