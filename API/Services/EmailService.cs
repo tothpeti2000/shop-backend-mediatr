@@ -35,12 +35,13 @@ namespace API.Services
                           Your order was completed successfully. We'll try to deliver the products to you as soon as possible.
                           <br/>
                           <br/>
-                          You ordered the following products:
+                          You ordered the following product(s):
                           <ul>
                             {productList}
                           </ul>
                           <br/>
                           Consider choosing us next time as well!
+                          <br/>
                           <br/>
                           Shop";
 

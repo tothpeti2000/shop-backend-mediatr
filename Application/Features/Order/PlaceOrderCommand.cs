@@ -97,8 +97,8 @@ namespace Application.Features.Order
 
             if(outOfStockProductNames != null)
             {
-                throw new InvalidOperationException("Looks like we don't have enough products in stock to complete your order\n" +
-                    $"You requested too many items of the following products: {string.Join(", ", outOfStockProductNames)}");
+                throw new InvalidOperationException("Looks like we don't have enough products in stock to complete your order. " +
+                    $"You requested too many items of the following product(s): {string.Join(", ", outOfStockProductNames)}");
             }
 
             foreach(var cartItem in cart.CartItems)
