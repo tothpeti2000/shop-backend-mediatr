@@ -1,20 +1,25 @@
 ﻿using Application.Services;
+using Domain.Models;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace API.Services
 {
     public class UserService : IUserService
     {
-        public ClaimsPrincipal User { get; }
+        private readonly ClaimsPrincipal user;
+        private readonly UserManager<User> userManager;
 
-        public UserService(IHttpContextAccessor httpContextAccessor)
+        public UserService(IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
         {
-            User = httpContextAccessor.HttpContext.User;
+            user = httpContextAccessor.HttpContext.User;
+            this.userManager = userManager;
         }
 
         public Guid GetUserIdFromContext()
         {
-            var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userIdString = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
             if (userIdString == null)
             {
@@ -22,6 +27,22 @@ namespace API.Services
             }
 
             return Guid.Parse(userIdString);
+        }
+
+        public async Task<User> GetByNameAsync(string name)
+        {
+            return await userManager.FindByNameAsync(name);
+        }
+
+        public async Task<bool> CheckPasswordAsync(User user, string password)
+        {
+            return await userManager.CheckPasswordAsync(user, password);
+        }
+
+        public async Task<string> GetUserEmailAsync(Guid userId)
+        {
+            var user = await userManager.FindByIdAsync(userId.ToString());
+            return await userManager.GetEmailAsync(user);
         }
     }
 }

@@ -68,25 +68,29 @@ namespace Application.Features.Order
         private readonly IProductRepository productRepository;
         private readonly IUserService userService;
         private readonly IPaymentService paymentService;
+        private readonly IEmailService emailService;
         private readonly Mapper<OrderProfile> mapper = new();
 
         public PlaceOrderCommandHandler(
             IOrderRepository orderRepository, 
             ICartRepository cartRepository, 
-            IProductRepository productRepository, 
+            IProductRepository productRepository,
+            IUserService userService,
             IPaymentService paymentService,
-            IUserService userService)
+            IEmailService emailService)
         {
             this.orderRepository = orderRepository;
             this.cartRepository = cartRepository;
             this.productRepository = productRepository;
-            this.paymentService = paymentService;
             this.userService = userService;
+            this.paymentService = paymentService;
+            this.emailService = emailService;
         }
 
         public async Task<Unit> Handle(PlaceOrderCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
+            var email = await userService.GetUserEmailAsync(userId);
             var cart = await cartRepository.GetCartOfUserAsync(userId, cancellationToken);
 
             var outOfStockProductNames = await GetOutOfStockProductNames(cart.CartItems, cancellationToken);
@@ -115,6 +119,8 @@ namespace Application.Features.Order
             await orderRepository.AddAsync(order, cancellationToken);
 
             await cartRepository.CreateCartForUserAsync(userId, cancellationToken);
+
+            await emailService.SendOrderConfirmationEmail(order, email);
 
             return Unit.Value;
         }
