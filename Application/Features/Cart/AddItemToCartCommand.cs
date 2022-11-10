@@ -39,17 +39,17 @@ namespace Application.Features.Cart
             this.userService = userService;
         }
 
-        public async Task<Unit> Handle(AddItemToCartCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(AddItemToCartCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
             var cart = await repository.GetCartOfUserAsync(userId, cancellationToken);
 
             var cartItem = cart.CartItems
-                .FirstOrDefault(ci => ci.ProductId == request.ProductId);
+                .FirstOrDefault(ci => ci.ProductId == command.ProductId);
 
             if (cartItem == null)
             {
-                cartItem = mapper.Map<AddItemToCartCommand, CartItem>(request);
+                cartItem = mapper.Map<AddItemToCartCommand, CartItem>(command);
 
                 cart.CartItems
                     .Add(cartItem);

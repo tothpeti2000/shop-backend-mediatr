@@ -1,7 +1,9 @@
 ﻿using Application.Services;
+using DAL;
 using Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace API.Services
@@ -27,6 +29,11 @@ namespace API.Services
             }
 
             return Guid.Parse(userIdString);
+        }
+
+        public async Task<IdentityResult> CreateUserAsync(User user, string password)
+        {
+            return await userManager.CreateAsync(user, password);
         }
 
         public async Task<User> GetByNameAsync(string name)

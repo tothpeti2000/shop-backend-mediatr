@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.Services;
+using Domain.Models;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;
@@ -30,24 +31,24 @@ namespace Application.Features.Auth
 
     public class RegisterUserCommandHandler: IRequestHandler<RegisterUserCommand, Unit>
     {
-        private readonly UserManager<User> userManager;
+        private readonly IUserService userService;
         private readonly ICartRepository cartRepository;
 
-        public RegisterUserCommandHandler(UserManager<User> userManager, ICartRepository cartRepository)
+        public RegisterUserCommandHandler(IUserService userService, ICartRepository cartRepository)
         {
-            this.userManager = userManager;
+            this.userService = userService;
             this.cartRepository = cartRepository;
         }
 
-        public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
         {
             var user = new User
             {
-                UserName = request.UserName,
-                Email = request.Email,
+                UserName = command.UserName,
+                Email = command.Email,
             };
 
-            var result = await userManager.CreateAsync(user, request.Password);
+            var result = await userService.CreateUserAsync(user, command.Password);
 
             if (!result.Succeeded)
             {
