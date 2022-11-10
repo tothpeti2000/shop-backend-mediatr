@@ -15,9 +15,9 @@ namespace Application.Features.Auth
     {
         public RegisterUserValidator()
         {
-            RuleFor(u => u.UserName).NotEmpty();
-            RuleFor(u => u.Email).NotEmpty().EmailAddress();
-            RuleFor(u => u.Password).NotEmpty();
+            RuleFor(u => u.UserName).NotEmpty().NotNull();
+            RuleFor(u => u.Email).NotEmpty().NotNull().EmailAddress();
+            RuleFor(u => u.Password).NotEmpty().NotNull();
         }
     }
 

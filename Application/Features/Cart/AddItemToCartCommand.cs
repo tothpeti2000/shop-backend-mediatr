@@ -1,4 +1,5 @@
-﻿using Application.Mapping;
+﻿using Application.Features.Auth;
+using Application.Mapping;
 using Application.Mapping.Profiles;
 using Application.Services;
 using Domain.Models;
@@ -13,6 +14,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Cart
 {
+    public class AddItemToCartValidator : AbstractValidator<AddItemToCartCommand>
+    {
+        public AddItemToCartValidator()
+        {
+            RuleFor(command => command.ProductId).NotEmpty().NotNull();
+        }
+    }
+
     public class AddItemToCartCommand : IRequest
     {
         public Guid ProductId { get; set; }

@@ -1,4 +1,5 @@
-﻿using Application.Services;
+﻿using Application.Features.Auth;
+using Application.Services;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;
@@ -10,6 +11,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Cart
 {
+    public class DeleteCartItemValidator : AbstractValidator<DeleteCartItemCommand>
+    {
+        public DeleteCartItemValidator()
+        {
+            RuleFor(command => command.Id).NotEmpty().NotNull();
+        }
+    }
+
     public class DeleteCartItemCommand : IRequest
     {
         public Guid Id { get; set; }

@@ -15,8 +15,8 @@ namespace Application.Features.Auth
     {
         public LoginUserValidator()
         {
-            RuleFor(credentials => credentials.UserName).NotEmpty();
-            RuleFor(credentials => credentials.Password).NotEmpty();
+            RuleFor(credentials => credentials.UserName).NotEmpty().NotNull();
+            RuleFor(credentials => credentials.Password).NotEmpty().NotNull();
         }
     }
 
