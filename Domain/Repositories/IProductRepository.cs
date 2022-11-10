@@ -12,5 +12,7 @@ namespace Domain.Repositories
     {
         public Task<(double, double)> GetPriceRangeAsync(CancellationToken cancellationToken);
         public Task<List<Guid>> GetTopProductCategoryIdsAsync(CancellationToken cancellationToken);
+        public Task<bool> CheckStockAsync(Guid id, int amount, CancellationToken cancellationToken);
+        public Task DecreaseStockAsync(Guid id, int amount, CancellationToken cancellationToken);
     }
 }

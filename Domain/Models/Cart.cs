@@ -12,6 +12,6 @@ namespace Domain.Models
         public User User { get; set; }
 
         public List<CartItem> CartItems { get; set; }
-        public bool Paid { get; set; }
+        public bool Completed { get; set; }
     }
 }

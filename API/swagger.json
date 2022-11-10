@@ -285,6 +285,38 @@
         }
       }
     },
+    "/api/Orders": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "operationId": "PlaceOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceOrderCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceOrderCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceOrderCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Products": {
       "get": {
         "tags": [
@@ -507,12 +539,48 @@
         },
         "additionalProperties": false
       },
+      "CustomerDetails": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DeleteCartItemCommand": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeliveryDetails": {
+        "type": "object",
+        "properties": {
+          "zipCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -645,6 +713,28 @@
           "token": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaymentMethod": {
+        "enum": [
+          "OnDelivery",
+          "CreditCard"
+        ],
+        "type": "string"
+      },
+      "PlaceOrderCommand": {
+        "type": "object",
+        "properties": {
+          "customerData": {
+            "$ref": "#/components/schemas/CustomerDetails"
+          },
+          "deliveryData": {
+            "$ref": "#/components/schemas/DeliveryDetails"
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/PaymentMethod"
           }
         },
         "additionalProperties": false
