@@ -9,6 +9,7 @@ namespace Domain.Models
 {
     public class User: IdentityUser<Guid>
     {
+        public string Name { get; set; }
         public List<SharedCart> SharedCarts { get; set; }
     }
 }

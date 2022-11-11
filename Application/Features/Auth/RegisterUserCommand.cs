@@ -16,6 +16,7 @@ namespace Application.Features.Auth
     {
         public RegisterUserValidator()
         {
+            RuleFor(u => u.Name).NotEmpty().NotNull();
             RuleFor(u => u.UserName).NotEmpty().NotNull();
             RuleFor(u => u.Email).NotEmpty().NotNull().EmailAddress();
             RuleFor(u => u.Password).NotEmpty().NotNull();
@@ -24,6 +25,7 @@ namespace Application.Features.Auth
 
     public class RegisterUserCommand: IRequest
     {
+        public string Name { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -44,6 +46,7 @@ namespace Application.Features.Auth
         {
             var user = new User
             {
+                Name = command.Name,
                 UserName = command.UserName,
                 Email = command.Email,
             };

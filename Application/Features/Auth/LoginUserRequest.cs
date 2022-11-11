@@ -29,6 +29,7 @@ namespace Application.Features.Auth
     public class LoginUserResponse
     {
         public string Token { get; set; }
+        public string Name { get; set; }
     }
 
     public class LoginUserRequestHandler : IRequestHandler<LoginUserRequest, LoginUserResponse>
@@ -59,7 +60,8 @@ namespace Application.Features.Auth
             }
 
             return new LoginUserResponse() {
-                Token = tokenGenerator.GenerateToken(user.Id) 
+                Token = tokenGenerator.GenerateToken(user.Id),
+                Name = user.Name
             };
         }
     }
