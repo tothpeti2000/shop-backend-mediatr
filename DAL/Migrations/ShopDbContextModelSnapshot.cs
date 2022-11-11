@@ -90,121 +90,121 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361"),
+                            Id = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94"),
                             Name = "Toy"
                         },
                         new
                         {
-                            Id = new Guid("9f5aa70c-7fa3-4b35-ae15-0f7e2ae852f5"),
+                            Id = new Guid("fff5feac-5a1e-4af8-8ab6-efbc1fe732f9"),
                             Name = "Play house"
                         },
                         new
                         {
-                            Id = new Guid("3405565f-4778-49fd-9051-439b3f6b46e2"),
+                            Id = new Guid("2f86b977-d7bf-418f-b3ea-eb0cff06603d"),
                             Name = "Baby toy",
-                            ParentCategoryId = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361")
+                            ParentCategoryId = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94")
                         },
                         new
                         {
-                            Id = new Guid("b572e2c4-b586-477f-b1b2-ba3301cdba41"),
+                            Id = new Guid("5b6b5ac5-649e-4747-ba97-2033f556bef1"),
                             Name = "Construction toy",
-                            ParentCategoryId = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361")
+                            ParentCategoryId = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94")
                         },
                         new
                         {
-                            Id = new Guid("595a18d8-f527-4a74-bbe4-dce0a134557f"),
+                            Id = new Guid("f5022a9d-f9d2-4a6c-8e15-19b1186e002a"),
                             Name = "Wooden toy",
-                            ParentCategoryId = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361")
+                            ParentCategoryId = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94")
                         },
                         new
                         {
-                            Id = new Guid("76e6a7cf-f353-4568-9dd0-34c35e13fbf6"),
+                            Id = new Guid("800cf665-42be-4793-9df4-93b6e29e8ec5"),
                             Name = "Plush figure",
-                            ParentCategoryId = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361")
+                            ParentCategoryId = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94")
                         },
                         new
                         {
-                            Id = new Guid("2da01f9c-bdc9-47ee-8b21-0efb06ebccc5"),
+                            Id = new Guid("7d5fd8c0-67e5-41d2-9e6a-0b06dc6f3678"),
                             Name = "Bicycles",
-                            ParentCategoryId = new Guid("95452e88-5962-4d21-bf1f-1a0671b72361")
+                            ParentCategoryId = new Guid("75a2d4b5-c6c2-4b67-a0f2-da7e0c601b94")
                         },
                         new
                         {
-                            Id = new Guid("87dda168-63ec-4fb0-8534-022ab84f2e83"),
+                            Id = new Guid("926c4a74-70a2-4ad3-a9b0-d4a1277877e9"),
                             Name = "Months 0-6",
-                            ParentCategoryId = new Guid("3405565f-4778-49fd-9051-439b3f6b46e2")
+                            ParentCategoryId = new Guid("2f86b977-d7bf-418f-b3ea-eb0cff06603d")
                         },
                         new
                         {
-                            Id = new Guid("2e23c327-1e04-443d-bf84-a5999cf2796c"),
+                            Id = new Guid("8df2017a-432f-4089-a26b-fbf3062fe6f0"),
                             Name = "Months 6-18",
-                            ParentCategoryId = new Guid("3405565f-4778-49fd-9051-439b3f6b46e2")
+                            ParentCategoryId = new Guid("2f86b977-d7bf-418f-b3ea-eb0cff06603d")
                         },
                         new
                         {
-                            Id = new Guid("24a66282-44fc-4285-ab84-503add4def7a"),
+                            Id = new Guid("18b92f9f-66f7-47a8-8fcb-4afb03cc8643"),
                             Name = "Months 18-24",
-                            ParentCategoryId = new Guid("3405565f-4778-49fd-9051-439b3f6b46e2")
+                            ParentCategoryId = new Guid("2f86b977-d7bf-418f-b3ea-eb0cff06603d")
                         },
                         new
                         {
-                            Id = new Guid("9791cf18-dcfa-4f3a-90b7-811dd0bd3a53"),
+                            Id = new Guid("e1bb95be-8e00-4eb9-8d0f-956002c78ec0"),
                             Name = "DUPLO",
-                            ParentCategoryId = new Guid("b572e2c4-b586-477f-b1b2-ba3301cdba41")
+                            ParentCategoryId = new Guid("5b6b5ac5-649e-4747-ba97-2033f556bef1")
                         },
                         new
                         {
-                            Id = new Guid("b881349a-06a9-415f-a6e0-3ea5402d3122"),
+                            Id = new Guid("eee42f5e-a0f6-40a8-99ba-726dc082e27e"),
                             Name = "LEGO",
-                            ParentCategoryId = new Guid("b572e2c4-b586-477f-b1b2-ba3301cdba41")
+                            ParentCategoryId = new Guid("5b6b5ac5-649e-4747-ba97-2033f556bef1")
                         },
                         new
                         {
-                            Id = new Guid("d23b0d9e-598d-4c25-adfc-ebc0dea17b30"),
+                            Id = new Guid("b6664b4f-9b04-464a-acbb-6e0d8c62387f"),
                             Name = "Building items",
-                            ParentCategoryId = new Guid("b572e2c4-b586-477f-b1b2-ba3301cdba41")
+                            ParentCategoryId = new Guid("5b6b5ac5-649e-4747-ba97-2033f556bef1")
                         },
                         new
                         {
-                            Id = new Guid("6a430922-1cb2-4be1-9b5b-6e7dae9a94e9"),
+                            Id = new Guid("abdf798d-977a-41c5-93ed-acbe7f53e0f8"),
                             Name = "Building blocks",
-                            ParentCategoryId = new Guid("595a18d8-f527-4a74-bbe4-dce0a134557f")
+                            ParentCategoryId = new Guid("f5022a9d-f9d2-4a6c-8e15-19b1186e002a")
                         },
                         new
                         {
-                            Id = new Guid("7c8825b1-f41d-4be8-8d18-4271c911d06a"),
+                            Id = new Guid("702c53c5-93dc-4bb6-a369-51e6f7be7269"),
                             Name = "Toys for skill development",
-                            ParentCategoryId = new Guid("595a18d8-f527-4a74-bbe4-dce0a134557f")
+                            ParentCategoryId = new Guid("f5022a9d-f9d2-4a6c-8e15-19b1186e002a")
                         },
                         new
                         {
-                            Id = new Guid("1a24db6a-b4e7-49c8-98a8-2a46f83126a0"),
+                            Id = new Guid("250a04ea-174a-48f8-8a4d-334f1554af54"),
                             Name = "Logic toys",
-                            ParentCategoryId = new Guid("595a18d8-f527-4a74-bbe4-dce0a134557f")
+                            ParentCategoryId = new Guid("f5022a9d-f9d2-4a6c-8e15-19b1186e002a")
                         },
                         new
                         {
-                            Id = new Guid("176f23eb-42ae-4d66-b0a2-814683f2ff09"),
+                            Id = new Guid("acad51fa-98ac-4b4c-a2e0-5ec396798289"),
                             Name = "Craftwork toys",
-                            ParentCategoryId = new Guid("595a18d8-f527-4a74-bbe4-dce0a134557f")
+                            ParentCategoryId = new Guid("f5022a9d-f9d2-4a6c-8e15-19b1186e002a")
                         },
                         new
                         {
-                            Id = new Guid("99bde60c-b27e-47d1-84b2-c04f9f8061dc"),
+                            Id = new Guid("d17b247a-a5f3-4021-9a0d-2f049df144c1"),
                             Name = "Baby taxis",
-                            ParentCategoryId = new Guid("2da01f9c-bdc9-47ee-8b21-0efb06ebccc5")
+                            ParentCategoryId = new Guid("7d5fd8c0-67e5-41d2-9e6a-0b06dc6f3678")
                         },
                         new
                         {
-                            Id = new Guid("81960bbb-7a58-4662-bb82-ef133e3718b7"),
+                            Id = new Guid("2f2e486a-cac1-4c4e-8479-90cbaa98140d"),
                             Name = "Motors",
-                            ParentCategoryId = new Guid("2da01f9c-bdc9-47ee-8b21-0efb06ebccc5")
+                            ParentCategoryId = new Guid("7d5fd8c0-67e5-41d2-9e6a-0b06dc6f3678")
                         },
                         new
                         {
-                            Id = new Guid("c4fc0b8c-8863-4d35-ac11-4496c86e1a46"),
+                            Id = new Guid("50b5deb6-165f-4900-b9ff-2fb01d5cd9cd"),
                             Name = "Tricycle",
-                            ParentCategoryId = new Guid("2da01f9c-bdc9-47ee-8b21-0efb06ebccc5")
+                            ParentCategoryId = new Guid("7d5fd8c0-67e5-41d2-9e6a-0b06dc6f3678")
                         });
                 });
 
@@ -292,9 +292,9 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7547294a-5a51-4adc-9338-72048068dbe1"),
+                            Id = new Guid("1d9628b3-289e-414b-ba6b-ff980d3f65c9"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("87dda168-63ec-4fb0-8534-022ab84f2e83"),
+                            CategoryId = new Guid("926c4a74-70a2-4ad3-a9b0-d4a1277877e9"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Activity playgim",
                             Price = 18.75,
@@ -302,9 +302,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c081b5a8-84a0-420b-9b4f-b31bb00cbf37"),
+                            Id = new Guid("7b92f9e1-a1dc-4c3b-bb08-e10a23823117"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("87dda168-63ec-4fb0-8534-022ab84f2e83"),
+                            CategoryId = new Guid("926c4a74-70a2-4ad3-a9b0-d4a1277877e9"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Colorful baby book",
                             Price = 4.3499999999999996,
@@ -312,9 +312,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9e01413e-02f2-416f-848d-3aa5afe67b0b"),
+                            Id = new Guid("9ca7db02-d7de-4c25-8fc0-8539c86676ae"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("2e23c327-1e04-443d-bf84-a5999cf2796c"),
+                            CategoryId = new Guid("8df2017a-432f-4089-a26b-fbf3062fe6f0"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Baby telephone",
                             Price = 9.3000000000000007,
@@ -322,9 +322,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f1cff739-8c59-4132-a03e-05d0ce14dcff"),
+                            Id = new Guid("0bed3b00-34e6-440b-9f26-3bc6b2ffe6e9"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("24a66282-44fc-4285-ab84-503add4def7a"),
+                            CategoryId = new Guid("18b92f9f-66f7-47a8-8fcb-4afb03cc8643"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Fisher Price hammer toy",
                             Price = 20.899999999999999,
@@ -332,9 +332,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3c37acfd-59c6-4a3e-bbb5-0873af1460a9"),
+                            Id = new Guid("6bd42463-108b-4053-934d-e41fbdb1b4ee"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("6a430922-1cb2-4be1-9b5b-6e7dae9a94e9"),
+                            CategoryId = new Guid("abdf798d-977a-41c5-93ed-acbe7f53e0f8"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Mega Blocks 24 pcs",
                             Price = 10.800000000000001,
@@ -342,9 +342,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("92a445d0-7d7d-4302-a1fa-5cd2434527f0"),
+                            Id = new Guid("7eccf99a-f52d-48d7-91e6-7f7f8ac9b58e"),
                             AverageRating = 4.7999999999999998,
-                            CategoryId = new Guid("6a430922-1cb2-4be1-9b5b-6e7dae9a94e9"),
+                            CategoryId = new Guid("abdf798d-977a-41c5-93ed-acbe7f53e0f8"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Maxi Blocks 56 pcs",
                             Price = 4.6500000000000004,
@@ -352,9 +352,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f5eca16a-82da-4c44-b71f-8c3cb8a07ff2"),
+                            Id = new Guid("2760a2a5-329b-42a5-91e0-b88c22a59fa0"),
                             AverageRating = 4.9000000000000004,
-                            CategoryId = new Guid("d128db53-33a6-4bbb-975b-9235200d07a5"),
+                            CategoryId = new Guid("abdf798d-977a-41c5-93ed-acbe7f53e0f8"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Building Blocks 80 pcs",
                             Price = 10.9,
@@ -362,9 +362,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8af59033-c1bd-49cd-801c-762a0c084298"),
+                            Id = new Guid("ce9391be-512d-4da1-b03f-893d9ad3a439"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("d23b0d9e-598d-4c25-adfc-ebc0dea17b30"),
+                            CategoryId = new Guid("b6664b4f-9b04-464a-acbb-6e0d8c62387f"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Lego City harbour",
                             Price = 68.900000000000006,
@@ -372,9 +372,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("80c4b6d9-6403-4d8f-804c-94381b87d694"),
+                            Id = new Guid("170c28a7-4b83-44d5-9d31-a48601a23525"),
                             AverageRating = 3.5,
-                            CategoryId = new Guid("9791cf18-dcfa-4f3a-90b7-811dd0bd3a53"),
+                            CategoryId = new Guid("e1bb95be-8e00-4eb9-8d0f-956002c78ec0"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Lego Duplo Excavator",
                             Price = 16.0,
@@ -382,9 +382,9 @@ namespace DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("023d2275-a6ab-41b1-9cdf-9a2cd69cdbed"),
+                            Id = new Guid("c1700b31-5b24-4e0e-aae9-7dc34810e8ee"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("9f5aa70c-7fa3-4b35-ae15-0f7e2ae852f5"),
+                            CategoryId = new Guid("fff5feac-5a1e-4af8-8ab6-efbc1fe732f9"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
                             Name = "Child supervision for 1 hour",
                             Price = 2.0,

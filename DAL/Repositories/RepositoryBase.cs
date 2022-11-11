@@ -106,11 +106,6 @@ namespace DAL.Repositories
             return await GetByConditionAsync(item => item.Id == id, cancellationToken, includes);
         }
 
-        public async Task AddAsync(T entity, CancellationToken cancellationToken)
-        {
-            await Entities.AddAsync(entity, cancellationToken);
-        }
-
         public async Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var entity = await GetByIdAsync(id, cancellationToken);
