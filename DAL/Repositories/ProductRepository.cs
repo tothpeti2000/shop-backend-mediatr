@@ -41,5 +41,18 @@ namespace DAL.Repositories
                 .Take(3)
                 .ToListAsync(cancellationToken);
         }
+
+        public async Task<bool> CheckStockAsync(Guid id, int amount, CancellationToken cancellationToken)
+        {
+            var product = await GetByIdAsync(id, cancellationToken);
+
+            return product.Stock >= amount;
+        }
+
+        public async Task DecreaseStockAsync(Guid id, int amount, CancellationToken cancellationToken)
+        {
+            var product = await GetByIdAsync(id, cancellationToken);
+            product.Stock -= amount;
+        }
     }
 }

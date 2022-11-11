@@ -15,8 +15,8 @@ namespace Application.Features.Auth
     {
         public LoginUserValidator()
         {
-            RuleFor(credentials => credentials.UserName).NotEmpty();
-            RuleFor(credentials => credentials.Password).NotEmpty();
+            RuleFor(credentials => credentials.UserName).NotEmpty().NotNull();
+            RuleFor(credentials => credentials.Password).NotEmpty().NotNull();
         }
     }
 
@@ -33,25 +33,25 @@ namespace Application.Features.Auth
 
     public class LoginUserRequestHandler : IRequestHandler<LoginUserRequest, LoginUserResponse>
     {
-        private readonly UserManager<User> userManager;
+        private readonly IUserService userService;
         private readonly ITokenGenerator tokenGenerator;
 
-        public LoginUserRequestHandler(UserManager<User> userManager, ITokenGenerator tokenGenerator)
+        public LoginUserRequestHandler(IUserService userService, ITokenGenerator tokenGenerator)
         {
-            this.userManager = userManager;
+            this.userService = userService;
             this.tokenGenerator = tokenGenerator;
         }
 
         public async Task<LoginUserResponse> Handle(LoginUserRequest request, CancellationToken cancellationToken)
         {
-            var user = await userManager.FindByNameAsync(request.UserName);
+            var user = await userService.GetByNameAsync(request.UserName);
 
             if (user == null)
             {
                 throw new InvalidOperationException("User not found by the given username");
             }
 
-            var passwordValid = await userManager.CheckPasswordAsync(user, request.Password);
+            var passwordValid = await userService.CheckPasswordAsync(user, request.Password);
 
             if (!passwordValid)
             {

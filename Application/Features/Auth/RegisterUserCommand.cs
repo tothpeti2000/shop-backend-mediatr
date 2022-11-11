@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.Services;
+using Domain.Models;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;
@@ -15,9 +16,9 @@ namespace Application.Features.Auth
     {
         public RegisterUserValidator()
         {
-            RuleFor(u => u.UserName).NotEmpty();
-            RuleFor(u => u.Email).NotEmpty().EmailAddress();
-            RuleFor(u => u.Password).NotEmpty();
+            RuleFor(u => u.UserName).NotEmpty().NotNull();
+            RuleFor(u => u.Email).NotEmpty().NotNull().EmailAddress();
+            RuleFor(u => u.Password).NotEmpty().NotNull();
         }
     }
 
@@ -30,12 +31,12 @@ namespace Application.Features.Auth
 
     public class RegisterUserCommandHandler: IRequestHandler<RegisterUserCommand, Unit>
     {
-        private readonly UserManager<User> userManager;
+        private readonly IUserService userService;
         private readonly ICartRepository cartRepository;
 
-        public RegisterUserCommandHandler(UserManager<User> userManager, ICartRepository cartRepository)
+        public RegisterUserCommandHandler(IUserService userService, ICartRepository cartRepository)
         {
-            this.userManager = userManager;
+            this.userService = userService;
             this.cartRepository = cartRepository;
         }
 
@@ -47,7 +48,7 @@ namespace Application.Features.Auth
                 Email = command.Email,
             };
 
-            var result = await userManager.CreateAsync(user, command.Password);
+            var result = await userService.CreateUserAsync(user, command.Password);
 
             if (!result.Succeeded)
             {

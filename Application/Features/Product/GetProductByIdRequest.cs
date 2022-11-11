@@ -1,4 +1,5 @@
-﻿using Application.Mapping;
+﻿using Application.Features.Auth;
+using Application.Mapping;
 using Application.Mapping.Profiles;
 using DAL.Exceptions;
 using Domain.Repositories;
@@ -12,6 +13,14 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Product
 {
+    public class GetProductByIdValidator : AbstractValidator<GetProductByIdRequest>
+    {
+        public GetProductByIdValidator()
+        {
+            RuleFor(request => request.Id).NotEmpty().NotNull();
+        }
+    }
+
     public class GetProductByIdRequest : IRequest<GetProductByIdResponse>
     {
         public Guid Id { get; set; }

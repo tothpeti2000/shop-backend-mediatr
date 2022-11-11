@@ -14,6 +14,7 @@ namespace Application.Features.Cart
     {
         public UpdateCartItemAmountValidator()
         {
+            RuleFor(cartItem => cartItem.Id).NotEmpty().NotNull();
             RuleFor(cartItem => cartItem.Amount).GreaterThanOrEqualTo(1);
         }
     }
