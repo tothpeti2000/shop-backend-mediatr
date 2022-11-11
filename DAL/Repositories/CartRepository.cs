@@ -40,7 +40,7 @@ namespace DAL.Repositories
 
             if (cart == null)
             {
-                throw new EntityNotFoundException();
+                throw new EntityNotFoundException(typeof(Cart));
             }
 
             return cart.CartItems;

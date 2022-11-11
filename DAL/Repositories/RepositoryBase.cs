@@ -95,7 +95,7 @@ namespace DAL.Repositories
 
             if (entity == null)
             {
-                throw new EntityNotFoundException();
+                throw new EntityNotFoundException(typeof(T));
             }
 
             return entity;

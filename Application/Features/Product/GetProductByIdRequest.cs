@@ -50,11 +50,6 @@ namespace Application.Features.Product
         {
             var product = await repository.GetByIdAsync(request.Id, cancellationToken);
 
-            if (product == null)
-            {
-                throw new EntityNotFoundException();
-            }
-
             return mapper.Map<Domain.Models.Product, GetProductByIdResponse>(product);
         }
     }

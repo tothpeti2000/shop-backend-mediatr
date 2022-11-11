@@ -16,7 +16,7 @@ namespace DAL.Repositories
 
         public async Task<List<SharedCart>> GetCartsOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
-            return await GetAsync(c => c.Users.Any(u => u.Id == userId) && !c.Paid, null, cancellationToken, c => c.Users);
+            return await GetAsync(c => c.Users.Any(u => u.Id == userId) && !c.Completed, null, cancellationToken, c => c.Users);
         }
 
         public async Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken)
@@ -28,6 +28,11 @@ namespace DAL.Repositories
                 .ToList();
 
             return passcodes;
+        }
+
+        public async Task<SharedCart> GetByPasscodeAsync(string passcode, CancellationToken cancellationToken)
+        {
+            return await GetByConditionAsync(c => c.Passcode == passcode, cancellationToken, c => c.Users);
         }
     }
 }

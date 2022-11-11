@@ -12,5 +12,6 @@ namespace Domain.Repositories
     {
         public Task<List<SharedCart>> GetCartsOfUserAsync(Guid userId, CancellationToken cancellationToken);
         public Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken);
+        public Task<SharedCart> GetByPasscodeAsync(string passcode, CancellationToken cancellationToken);
     }
 }
