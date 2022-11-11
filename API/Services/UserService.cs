@@ -31,9 +31,9 @@ namespace API.Services
             return Guid.Parse(userIdString);
         }
 
-        public async Task<IdentityResult> CreateUserAsync(User user, string password)
+        public async Task CreateUserAsync(User user, string password)
         {
-            return await userManager.CreateAsync(user, password);
+            await userManager.CreateAsync(user, password);
         }
 
         public async Task<User> GetByNameAsync(string name)
@@ -55,6 +55,44 @@ namespace API.Services
         {
             var user = await userManager.FindByIdAsync(userId.ToString());
             return await userManager.GetEmailAsync(user);
+        }
+
+        public async Task UpdateNameAsync(Guid userId, string name)
+        {
+            var user = await userManager.FindByIdAsync(userId.ToString());
+            user.Name = name;
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Empty;
+
+                foreach (var error in result.Errors)
+                {
+                    errors += $"{error.Description}\n";
+                }
+
+                throw new InvalidOperationException(errors);
+            }
+        }
+
+        public async Task UpdatePasswordAsync(Guid userId, string currentPassword, string newPassword)
+        {
+            var user = await userManager.FindByIdAsync(userId.ToString());
+            var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Empty;
+
+                foreach (var error in result.Errors)
+                {
+                    errors += $"{error.Description}\n";
+                }
+
+                throw new InvalidOperationException(errors);
+            }
         }
     }
 }

@@ -51,20 +51,7 @@ namespace Application.Features.Auth
                 Email = command.Email,
             };
 
-            var result = await userService.CreateUserAsync(user, command.Password);
-
-            if (!result.Succeeded)
-            {
-                var errors = string.Empty;
-
-                foreach (var error in result.Errors)
-                {
-                    errors += $"{error.Description}\n";
-                }
-
-                throw new InvalidOperationException(errors);
-            }
-
+            await userService.CreateUserAsync(user, command.Password);
             await cartRepository.CreateCartForUserAsync(user.Id, cancellationToken);
 
             return Unit.Value;
