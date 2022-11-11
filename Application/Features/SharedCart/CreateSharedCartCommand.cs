@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Xml.Linq;
+using DAL.Repositories;
 
 namespace Application.Features.SharedCart
 {
@@ -39,21 +40,26 @@ namespace Application.Features.SharedCart
         private readonly ISharedCartRepository repository;
         private readonly IUserService userService;
         private readonly IPasscodeGenerator passcodeGenerator;
-        private readonly UserManager<User> userManager;
 
-        public CreateSharedCartCommandHandler(ISharedCartRepository repository, IUserService userService, IPasscodeGenerator passcodeGenerator, UserManager<User> userManager)
+        public CreateSharedCartCommandHandler(ISharedCartRepository repository, IUserService userService, IPasscodeGenerator passcodeGenerator)
         {
             this.repository = repository;
             this.userService = userService;
             this.passcodeGenerator = passcodeGenerator;
-            this.userManager = userManager;
         }
 
         public async Task<CreateSharedCartResponse> Handle(CreateSharedCartCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
-            var user = await userManager.FindByIdAsync(userId.ToString());
-            var passcode = await passcodeGenerator.GeneratePasscode(8, cancellationToken);
+            var user = await userService.GetByIdAsync(userId);
+            var passcode = passcodeGenerator.GeneratePasscode(8);
+
+            var cartPasscodes = await repository.GetAllPasscodesAsync(cancellationToken);
+
+            while (cartPasscodes.Contains(passcode))
+            {
+                passcode = passcodeGenerator.GeneratePasscode(8);
+            }
 
             var cart = new Domain.Models.SharedCart
             {

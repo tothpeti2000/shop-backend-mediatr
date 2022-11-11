@@ -13,6 +13,7 @@ namespace Application.Services
         public Guid GetUserIdFromContext();
         public Task<IdentityResult> CreateUserAsync(User user, string password);
         public Task<User> GetByNameAsync(string name);
+        public Task<User> GetByIdAsync(Guid id);
         public Task<bool> CheckPasswordAsync(User user, string password);
         public Task<string> GetUserEmailAsync(Guid userId);
     }

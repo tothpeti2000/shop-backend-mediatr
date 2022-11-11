@@ -8,6 +8,6 @@ namespace Application.Services
 {
     public interface IPasscodeGenerator
     {
-        public Task<string> GeneratePasscode(int length, CancellationToken cancellationToken);
+        public string GeneratePasscode(int length);
     }
 }

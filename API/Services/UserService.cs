@@ -41,6 +41,11 @@ namespace API.Services
             return await userManager.FindByNameAsync(name);
         }
 
+        public async Task<User> GetByIdAsync(Guid id)
+        {
+            return await userManager.FindByIdAsync(id.ToString());
+        }
+
         public async Task<bool> CheckPasswordAsync(User user, string password)
         {
             return await userManager.CheckPasswordAsync(user, password);
