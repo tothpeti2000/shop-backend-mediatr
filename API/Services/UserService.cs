@@ -33,7 +33,8 @@ namespace API.Services
 
         public async Task CreateUserAsync(User user, string password)
         {
-            await userManager.CreateAsync(user, password);
+            var result = await userManager.CreateAsync(user, password);
+            CheckResult(result);
         }
 
         public async Task<User> GetByNameAsync(string name)
@@ -63,25 +64,18 @@ namespace API.Services
             user.Name = name;
 
             var result = await userManager.UpdateAsync(user);
-
-            if (!result.Succeeded)
-            {
-                var errors = string.Empty;
-
-                foreach (var error in result.Errors)
-                {
-                    errors += $"{error.Description}\n";
-                }
-
-                throw new InvalidOperationException(errors);
-            }
+            CheckResult(result);
         }
 
         public async Task UpdatePasswordAsync(Guid userId, string currentPassword, string newPassword)
         {
             var user = await userManager.FindByIdAsync(userId.ToString());
             var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            CheckResult(result);
+        }
 
+        private static void CheckResult(IdentityResult result)
+        {
             if (!result.Succeeded)
             {
                 var errors = string.Empty;
