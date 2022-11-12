@@ -22,7 +22,7 @@ namespace Application.Features.SharedCart
             public Guid Id { get; set; }
             public string Name { get; set; }
             public string? Description { get; set; }
-            public int MemberCount { get; set; }
+            public List<string> UserNames { get; set; }
         }
 
         public List<SharedCartDto> Carts { get; set; }

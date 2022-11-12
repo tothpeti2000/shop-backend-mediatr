@@ -14,7 +14,7 @@ namespace Application.Mapping.Profiles
         public SharedCartProfile()
         {
             CreateMap<SharedCart, GetSharedCartsResponse.SharedCartDto>()
-                .ForMember(dto => dto.MemberCount, options => options.MapFrom(cart => cart.Users.Count));
+                .ForMember(dto => dto.UserNames, options => options.MapFrom(cart => cart.Users.Select(u => u.Name)));
 
             CreateMap<SharedCart, JoinSharedCartResponse>();
         }
