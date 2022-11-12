@@ -2,6 +2,7 @@
 using Application.Mapping.Profiles;
 using Application.Services;
 using AutoMapper;
+using Domain.Interfaces;
 using Domain.Models;
 using Domain.Repositories;
 using FluentValidation;
@@ -66,6 +67,7 @@ namespace Application.Features.Order
         private readonly IOrderRepository orderRepository;
         private readonly ICartRepository cartRepository;
         private readonly IProductRepository productRepository;
+        private readonly IUnitOfWork uow;
         private readonly IUserService userService;
         private readonly IPaymentService paymentService;
         private readonly IEmailService emailService;
@@ -75,6 +77,7 @@ namespace Application.Features.Order
             IOrderRepository orderRepository, 
             ICartRepository cartRepository, 
             IProductRepository productRepository,
+            IUnitOfWork uow,
             IUserService userService,
             IPaymentService paymentService,
             IEmailService emailService)
@@ -82,6 +85,7 @@ namespace Application.Features.Order
             this.orderRepository = orderRepository;
             this.cartRepository = cartRepository;
             this.productRepository = productRepository;
+            this.uow = uow;
             this.userService = userService;
             this.paymentService = paymentService;
             this.emailService = emailService;
@@ -119,6 +123,8 @@ namespace Application.Features.Order
             await orderRepository.AddAsync(order, cancellationToken);
 
             await cartRepository.CreateCartForUserAsync(userId, cancellationToken);
+
+            await uow.SaveChangesAsync();
 
             await emailService.SendOrderConfirmationEmail(order, email);
 
