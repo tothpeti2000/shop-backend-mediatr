@@ -1,7 +1,9 @@
-﻿using Application.Mapping;
+﻿using Application.Hubs;
+using Application.Mapping;
 using Application.Mapping.Profiles;
 using Application.Services;
 using DAL.Repositories;
+using Domain.Interfaces;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;
@@ -36,12 +38,20 @@ namespace Application.Features.SharedCart
     {
         private readonly ISharedCartRepository repository;
         private readonly IUserService userService;
+        private readonly ISharedCartHub sharedCartHub;
+        private readonly IUnitOfWork uow;
         private readonly Mapper<SharedCartProfile> mapper = new();
 
-        public JoinSharedCartCommandHandler(ISharedCartRepository repository, IUserService userService)
+        public JoinSharedCartCommandHandler(
+            ISharedCartRepository repository, 
+            IUserService userService, 
+            ISharedCartHub sharedCartHub, 
+            IUnitOfWork uow)
         {
             this.repository = repository;
             this.userService = userService;
+            this.sharedCartHub = sharedCartHub;
+            this.uow = uow;
         }
 
         public async Task<JoinSharedCartResponse> Handle(JoinSharedCartCommand command, CancellationToken cancellationToken)
@@ -57,6 +67,10 @@ namespace Application.Features.SharedCart
             }
 
             cart.Users.Add(user);
+
+            await uow.SaveChangesAsync();
+
+            await sharedCartHub.UserJoinedCart($"{user.Name} has joined the {cart.Name} shared cart", cart.Id);
 
             return mapper.Map<Domain.Models.SharedCart, JoinSharedCartResponse>(cart);
         }

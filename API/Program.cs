@@ -1,5 +1,7 @@
 using API;
+using API.Hubs;
 using API.Services;
+using Application.Hubs;
 using Application.Pipeline;
 using Application.Services;
 using DAL;
@@ -134,6 +136,10 @@ builder.Services.AddCors(options =>
 builder.Services.AddMediatR(Assembly.Load("Application"));
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(SaveBehavior<,>));
 
+// SignalR
+builder.Services.AddSignalR();
+builder.Services.AddTransient<ISharedCartHub, SharedCartHubAdapter>();
+
 // Repositories, Services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ITokenGenerator, TokenGenerator>();
@@ -174,5 +180,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<SharedCartHub>("/hubs/shared-cart");
 
 app.Run();
