@@ -14,5 +14,6 @@ namespace Domain.Repositories
         public Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken);
         public Task<SharedCart> GetByPasscodeAsync(string passcode, CancellationToken cancellationToken);
         public Task<SharedCart> GetCartByIdAsync(Guid id, CancellationToken cancellationToken);
+        public Task<List<SharedCartItem>> GetCartItemsAsync(Guid id, CancellationToken cancellationToken);
     }
 }

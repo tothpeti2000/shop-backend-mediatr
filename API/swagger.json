@@ -666,6 +666,47 @@
           }
         }
       }
+    },
+    "/api/SharedCarts/{id}/items": {
+      "get": {
+        "tags": [
+          "SharedCarts"
+        ],
+        "operationId": "GetSharedCartItems",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -930,6 +971,19 @@
         },
         "additionalProperties": false
       },
+      "GetSharedCartItemsResponse": {
+        "type": "object",
+        "properties": {
+          "sharedCartItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SharedCartItemDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetSharedCartsResponse": {
         "type": "object",
         "properties": {
@@ -1099,6 +1153,32 @@
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SharedCartItemDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "imgUrl": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

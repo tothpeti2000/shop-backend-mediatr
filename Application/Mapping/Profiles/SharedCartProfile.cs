@@ -18,6 +18,11 @@ namespace Application.Mapping.Profiles
 
             CreateMap<SharedCart, JoinSharedCartResponse>();
             CreateMap<AddItemToSharedCartCommand, SharedCartItem>();
+
+            CreateMap<SharedCartItem, GetSharedCartItemsResponse.SharedCartItemDto>()
+                .ForMember(dto => dto.Name, options => options.MapFrom(cartItem => cartItem.Product.Name))
+                .ForMember(dto => dto.Price, options => options.MapFrom(cartItem => cartItem.Product.Price))
+                .ForMember(dto => dto.ImgUrl, options => options.MapFrom(cartItem => cartItem.Product.ImgUrl));
         }
     }
 }

@@ -41,5 +41,11 @@ namespace API.Controllers
         {
             await mediator.Send(command, cancellationToken);
         }
+
+        [HttpGet("{id}/items")]
+        public async Task<GetSharedCartItemsResponse> GetSharedCartItems(Guid id, CancellationToken cancellationToken)
+        {
+            return await mediator.Send(new GetSharedCartItemsRequest { Id = id }, cancellationToken);
+        }
     }
 }
