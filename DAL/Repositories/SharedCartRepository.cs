@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using DAL.Exceptions;
+using Domain.Models;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -33,6 +34,11 @@ namespace DAL.Repositories
         public async Task<SharedCart> GetByPasscodeAsync(string passcode, CancellationToken cancellationToken)
         {
             return await GetByConditionAsync(c => c.Passcode == passcode, cancellationToken, c => c.Users);
+        }
+
+        public async Task<SharedCart> GetCartByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            return await GetByIdAsync(id, cancellationToken, cart => cart.CartItems);
         }
     }
 }

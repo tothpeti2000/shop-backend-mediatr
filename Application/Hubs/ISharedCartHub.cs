@@ -9,5 +9,6 @@ namespace Application.Hubs
     public interface ISharedCartHub
     {
         Task UserJoinedCart(string message, Guid cartId);
+        Task ItemAdded(string message, Guid cartId);
     }
 }

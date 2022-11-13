@@ -634,6 +634,38 @@
           }
         }
       }
+    },
+    "/api/SharedCarts/add-item": {
+      "post": {
+        "tags": [
+          "SharedCarts"
+        ],
+        "operationId": "AddItemToSharedCart",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToSharedCartCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToSharedCartCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddItemToSharedCartCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -641,6 +673,20 @@
       "AddItemToCartCommand": {
         "type": "object",
         "properties": {
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AddItemToSharedCartCommand": {
+        "type": "object",
+        "properties": {
+          "cartId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "productId": {
             "type": "string",
             "format": "uuid"

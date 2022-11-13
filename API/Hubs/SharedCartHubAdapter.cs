@@ -17,5 +17,11 @@ namespace API.Hubs
             await hubContext.Clients.Group(cartId.ToString())
                 .UserJoinedCart(message, cartId);
         }
+
+        public async Task ItemAdded(string message, Guid cartId)
+        {
+            await hubContext.Clients.Group(cartId.ToString())
+                .ItemAdded(message, cartId);
+        }
     }
 }

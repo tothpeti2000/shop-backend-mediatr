@@ -154,6 +154,7 @@ builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ISharedCartRepository, SharedCartRepository>();
+builder.Services.AddScoped<ISharedCartItemRepository, SharedCartItemRepository>();
 
 var app = builder.Build();
 

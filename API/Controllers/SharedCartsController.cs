@@ -35,5 +35,11 @@ namespace API.Controllers
         {
             return await mediator.Send(command, cancellationToken);
         }
+
+        [HttpPost("add-item")]
+        public async Task AddItemToSharedCart(AddItemToSharedCartCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
+        }
     }
 }

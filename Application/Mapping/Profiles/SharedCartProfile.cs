@@ -17,6 +17,7 @@ namespace Application.Mapping.Profiles
                 .ForMember(dto => dto.UserNames, options => options.MapFrom(cart => cart.Users.Select(u => u.Name)));
 
             CreateMap<SharedCart, JoinSharedCartResponse>();
+            CreateMap<AddItemToSharedCartCommand, SharedCartItem>();
         }
     }
 }
