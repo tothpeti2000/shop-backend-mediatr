@@ -9,6 +9,6 @@ namespace Domain.Repositories
 {
     public interface ISharedCartItemRepository: IRepositoryBase<SharedCartItem>
     {
-
+        public Task<SharedCartItem> GetItemByIdAsync(Guid id, CancellationToken cancellationToken);
     }
 }

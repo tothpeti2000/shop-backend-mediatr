@@ -63,14 +63,14 @@ namespace Application.Features.SharedCart
             var cartItem = cart.CartItems
                 .FirstOrDefault(ci => ci.ProductId == command.ProductId);
 
-            var message = $"{user.Name} has just added another {product.Name} to the {cart.Name} cart";
+            var message = $"{user.Name} modified the amount of {product.Name}";
 
             if (cartItem == null)
             {
                 cartItem = mapper.Map<AddItemToSharedCartCommand, SharedCartItem>(command);
                 cart.CartItems.Add(cartItem);
 
-                message = $"{user.Name} has just added a new item to the {cart.Name} cart: {product.Name}";
+                message = $"{user.Name} added {product.Name}";
             }
 
             cartItem.Amount++;

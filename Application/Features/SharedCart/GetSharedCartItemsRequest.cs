@@ -36,6 +36,7 @@ namespace Application.Features.SharedCart
             public int Amount { get; set; }
         }
 
+        public string CartName { get; set; }
         public List<SharedCartItemDto> SharedCartItems { get; set; }
     }
 
@@ -51,10 +52,12 @@ namespace Application.Features.SharedCart
 
         public async Task<GetSharedCartItemsResponse> Handle(GetSharedCartItemsRequest request, CancellationToken cancellationToken)
         {
+            var name = await repository.GetNameByIdAsync(request.Id, cancellationToken);
             var cartItems = await repository.GetCartItemsAsync(request.Id, cancellationToken);
 
             return new GetSharedCartItemsResponse
             {
+                CartName = name,
                 SharedCartItems = mapper.Map<List<SharedCartItem>, List<GetSharedCartItemsResponse.SharedCartItemDto>>(cartItems)
             };
         }

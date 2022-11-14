@@ -55,5 +55,11 @@ namespace DAL.Repositories
 
             return cart.CartItems;
         }
+
+        public async Task<string> GetNameByIdAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var cart = await GetByIdAsync(id, cancellationToken);
+            return cart.Name;
+        }
     }
 }

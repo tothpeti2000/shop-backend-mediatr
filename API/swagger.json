@@ -1016,6 +1016,10 @@
       "GetSharedCartItemsResponse": {
         "type": "object",
         "properties": {
+          "cartName": {
+            "type": "string",
+            "nullable": true
+          },
           "sharedCartItems": {
             "type": "array",
             "items": {

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Models
 {
+    [DisplayName("shared cart item")]
     public class SharedCartItem: EntityBase
     {
         public Guid CartId { get; set; }
