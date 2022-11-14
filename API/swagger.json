@@ -707,6 +707,38 @@
           }
         }
       }
+    },
+    "/api/SharedCarts/delete-item": {
+      "put": {
+        "tags": [
+          "SharedCarts"
+        ],
+        "operationId": "DeleteSharedCartItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSharedCartItemCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSharedCartItemCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteSharedCartItemCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -830,6 +862,16 @@
         "type": "object",
         "properties": {
           "id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeleteSharedCartItemCommand": {
+        "type": "object",
+        "properties": {
+          "cartItemId": {
             "type": "string",
             "format": "uuid"
           }
