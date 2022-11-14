@@ -708,6 +708,38 @@
         }
       }
     },
+    "/api/SharedCarts/update-item": {
+      "put": {
+        "tags": [
+          "SharedCarts"
+        ],
+        "operationId": "UpdateSharedCartItemAmount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSharedCartItemAmountCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSharedCartItemAmountCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSharedCartItemAmountCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/SharedCarts/delete-item": {
       "put": {
         "tags": [
@@ -1248,6 +1280,20 @@
         "additionalProperties": false
       },
       "UpdateCartItemAmountCommand": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateSharedCartItemAmountCommand": {
         "type": "object",
         "properties": {
           "id": {

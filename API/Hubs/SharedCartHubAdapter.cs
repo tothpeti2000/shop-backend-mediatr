@@ -29,5 +29,11 @@ namespace API.Hubs
             await hubContext.Clients.Group(cartId.ToString())
                 .ItemDeleted(message, cartId);
         }
+
+        public async Task ItemAmountUpdated(string message, Guid cartId)
+        {
+            await hubContext.Clients.Group(cartId.ToString())
+                .ItemAmountUpdated(message, cartId);
+        }
     }
 }

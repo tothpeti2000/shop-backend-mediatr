@@ -11,5 +11,6 @@ namespace Application.Hubs
         Task UserJoinedCart(string message, Guid cartId);
         Task ItemAdded(string message, Guid cartId);
         Task ItemDeleted(string message, Guid cartId);
+        Task ItemAmountUpdated(string message, Guid cartId);
     }
 }

@@ -48,6 +48,12 @@ namespace API.Controllers
             return await mediator.Send(new GetSharedCartItemsRequest { Id = id }, cancellationToken);
         }
 
+        [HttpPut("update-item")]
+        public async Task UpdateSharedCartItemAmount(UpdateSharedCartItemAmountCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
+        }
+
         [HttpPut("delete-item")]
         public async Task DeleteSharedCartItem(DeleteSharedCartItemCommand command, CancellationToken cancellationToken)
         {
