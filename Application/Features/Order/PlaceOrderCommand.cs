@@ -41,7 +41,6 @@ namespace Application.Features.Order
     }
 
     public class PlaceOrderCommand : IRequest
-
     {
         public CustomerDetails CustomerData { get; set; }
         public DeliveryDetails DeliveryData { get; set; }

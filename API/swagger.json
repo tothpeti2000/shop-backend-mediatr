@@ -806,10 +806,6 @@
             "type": "string",
             "format": "uuid"
           },
-          "productId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "name": {
             "type": "string",
             "nullable": true
