@@ -81,6 +81,25 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Key)
     };
+
+    // Without this config section, the JWT authentication handler wouldn't be able to read
+    // the access token from the query string when a WS request comes in
+    // See more at https://learn.microsoft.com/en-us/aspnet/core/signalr/authn-and-authz?view=aspnetcore-7.0&viewFallbackFrom=aspnetcore-2.2
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var token = context.Request.Query["access_token"];
+            var path = context.HttpContext.Request.Path;
+
+            if (!string.IsNullOrEmpty(token) && path.StartsWithSegments("/hubs/shared-cart"))
+            {
+                context.Token = token;
+            }
+
+            return Task.CompletedTask;
+        }
+    };
 });
 
 // Swagger
