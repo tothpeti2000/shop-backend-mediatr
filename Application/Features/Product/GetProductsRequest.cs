@@ -36,12 +36,14 @@ namespace Application.Features.Product
 
     public class GetProductsRequestHandler : IRequestHandler<GetProductsRequest, GetProductsResponse>
     {
-        private readonly IProductRepository repository;
+        private readonly IProductRepository productRepository;
+        private readonly ICategoryRepository categoryRepository;
         private readonly Mapper<ProductProfile> mapper = new();
 
-        public GetProductsRequestHandler(IProductRepository repository)
+        public GetProductsRequestHandler(IProductRepository productRepository, ICategoryRepository categoryRepository)
         {
-            this.repository = repository;
+            this.productRepository = productRepository;
+            this.categoryRepository = categoryRepository;
         }
 
         public async Task<GetProductsResponse> Handle(GetProductsRequest request, CancellationToken cancellationToken)
@@ -63,24 +65,37 @@ namespace Application.Features.Product
                 filter = filter.And(p => p.Price <= request.ToPrice);
             }
 
-            filter = filter.And(GetCategoryFilter(request.CategoryIds));
+            var categoryIds = new HashSet<Guid>();
 
-            var pagedProducts = await repository.GetPagedAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
+            if (request.CategoryIds != null)
+            {
+                foreach (var categoryId in request.CategoryIds)
+                {
+                    categoryIds.Add(categoryId);
+
+                    var descendantCategoryIds = await categoryRepository.GetDescendantIds(categoryId, cancellationToken);
+
+                    foreach (var descendantCategoryId in descendantCategoryIds)
+                    {
+                        categoryIds.Add(descendantCategoryId);
+                    }
+                }
+
+                filter = filter.And(GetCategoryFilter(categoryIds));
+            }
+
+            var pagedProducts = await productRepository.GetPagedAsync(filter, request.OrderBy, request.Page, request.Count, cancellationToken);
 
             return mapper.Map<PagedList<Domain.Models.Product>, GetProductsResponse>(pagedProducts);
         }
 
-        private static ExpressionStarter<Domain.Models.Product> GetCategoryFilter(List<Guid>? categoryIds)
+        private static ExpressionStarter<Domain.Models.Product> GetCategoryFilter(HashSet<Guid> categoryIds)
         {
             var categoryFilter = PredicateBuilder.New<Domain.Models.Product>(true);
 
-
-            if (categoryIds != null)
+            foreach (var categoryId in categoryIds)
             {
-                foreach (var categoryId in categoryIds)
-                {
-                    categoryFilter = categoryFilter.Or(p => p.CategoryId == categoryId || p.Category.ParentCategoryId == categoryId);
-                }
+                categoryFilter = categoryFilter.Or(p => p.CategoryId == categoryId);
             }
 
             return categoryFilter;

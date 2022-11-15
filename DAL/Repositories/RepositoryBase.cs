@@ -28,11 +28,6 @@ namespace DAL.Repositories
             await Entities.AddAsync(entity, cancellationToken);
         }
 
-        public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
-        {
-            return await Entities.ToListAsync(cancellationToken);
-        }
-
         public async Task<List<T>> GetAsync(Expression<Func<T, bool>> filter, string? orderByString, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Entities.AsQueryable();
@@ -49,6 +44,11 @@ namespace DAL.Repositories
 
             return await sorted
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)
+        {
+            return await GetAsync(_ => true, null, cancellationToken, includes);
         }
 
         public async Task<PagedList<T>> GetPagedAsync(Expression<Func<T, bool>> filter, string? orderByString, int page, int count, CancellationToken cancellationToken, params Expression<Func<T, object>>[] includes)

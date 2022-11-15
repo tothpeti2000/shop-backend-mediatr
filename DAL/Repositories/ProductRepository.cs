@@ -15,12 +15,6 @@ namespace DAL.Repositories
         public ProductRepository(ShopDbContext db): base(db.Products)
         { }
 
-        public async Task<List<Product>> GetProductsAsync(Expression<Func<Product, bool>> filter, CancellationToken cancellationToken)
-        {
-            return await Entities
-                .ToListAsync(cancellationToken);
-        }
-
         public async Task<(double, double)> GetPriceRangeAsync(CancellationToken cancellationToken)
         {
             var prices = Entities

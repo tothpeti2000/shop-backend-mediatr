@@ -10,5 +10,6 @@ namespace Domain.Repositories
     public interface ICategoryRepository: IRepositoryBase<Category>
     {
         public Task<List<Category>> GetTopCategoriesAsync(CancellationToken cancellationToken);
+        public Task<HashSet<Guid>> GetDescendantIds(Guid id, CancellationToken cancellationToken);
     }
 }

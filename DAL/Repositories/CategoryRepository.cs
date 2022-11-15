@@ -26,5 +26,32 @@ namespace DAL.Repositories
                 .Where(c => topCategoryIds.Contains(c.Id))
                 .ToListAsync(cancellationToken);
         }
+
+        public async Task<HashSet<Guid>> GetDescendantIds(Guid id, CancellationToken cancellationToken)
+        {
+            var categories = await GetAllAsync(cancellationToken, category => category.ParentCategory);
+
+            var descendantIds = new HashSet<Guid>();
+
+            foreach (var category in categories)
+            {
+                if (IsAncestorOf(id, category))
+                {
+                    descendantIds.Add(category.Id);
+                }
+            }
+
+            return descendantIds;
+        }
+
+        private static bool IsAncestorOf(Guid ancestorId, Category? descendant)
+        {
+            if (descendant == null)
+            {
+                return false;
+            }
+
+            return descendant.ParentCategoryId == ancestorId || IsAncestorOf(ancestorId, descendant.ParentCategory);
+        }
     }
 }
