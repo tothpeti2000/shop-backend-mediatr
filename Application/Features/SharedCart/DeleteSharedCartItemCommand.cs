@@ -53,7 +53,13 @@ namespace Application.Features.SharedCart
             await repository.DeleteByIdAsync(command.CartItemId, cancellationToken);
             await uow.SaveChangesAsync();
 
-            await sharedCartHub.ItemDeleted($"{user.Name} deleted {cartItem.Product.Name}", cartItem.CartId);
+            var actionDetails = new ActionDetails
+            {
+                Message = $"{user.Name} deleted {cartItem.Product.Name}",
+                CartId = cartItem.CartId
+            };
+
+            await sharedCartHub.ItemDeleted(actionDetails, cartItem.CartId);
 
             return Unit.Value;
         }

@@ -18,22 +18,22 @@ namespace API.Hubs
                 .UserJoinedCart(message, cartId);
         }
 
-        public async Task ItemAdded(string message, Guid cartId)
+        public async Task ItemAdded(ActionDetails details, Guid cartId)
         {
             await hubContext.Clients.Group(cartId.ToString())
-                .ItemAdded(message, cartId);
+                .ItemAdded(details, cartId);
         }
 
-        public async Task ItemDeleted(string message, Guid cartId)
+        public async Task ItemDeleted(ActionDetails details, Guid cartId)
         {
             await hubContext.Clients.Group(cartId.ToString())
-                .ItemDeleted(message, cartId);
+                .ItemDeleted(details, cartId);
         }
 
-        public async Task ItemAmountUpdated(string message, Guid cartId)
+        public async Task ItemAmountUpdated(ActionDetails details, Guid cartId)
         {
             await hubContext.Clients.Group(cartId.ToString())
-                .ItemAmountUpdated(message, cartId);
+                .ItemAmountUpdated(details, cartId);
         }
     }
 }

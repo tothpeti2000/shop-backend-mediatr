@@ -56,7 +56,13 @@ namespace Application.Features.SharedCart
             cartItem.Amount = command.Amount;
             await uow.SaveChangesAsync();
 
-            await sharedCartHub.ItemAmountUpdated($"{user.Name} modified the amount of {cartItem.Product.Name}", cartItem.CartId);
+            var actionDetails = new ActionDetails
+            {
+                Message = $"{user.Name} modified the amount of {cartItem.Product.Name}",
+                CartId = cartItem.CartId
+            };
+
+            await sharedCartHub.ItemAmountUpdated(actionDetails, cartItem.CartId);
 
             return Unit.Value;
         }

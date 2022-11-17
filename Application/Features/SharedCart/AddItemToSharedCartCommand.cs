@@ -76,7 +76,13 @@ namespace Application.Features.SharedCart
             cartItem.Amount++;
             await uow.SaveChangesAsync();
 
-            await sharedCartHub.ItemAdded(message, command.CartId);
+            var actionDetails = new ActionDetails
+            {
+                Message = message,
+                CartId = command.CartId
+            };
+
+            await sharedCartHub.ItemAdded(actionDetails, command.CartId);
 
             return Unit.Value;
         }
