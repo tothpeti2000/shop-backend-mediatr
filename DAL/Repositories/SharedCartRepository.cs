@@ -38,7 +38,7 @@ namespace DAL.Repositories
 
         public async Task<SharedCart> GetCartByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await GetByIdAsync(id, cancellationToken, cart => cart.CartItems);
+            return await GetByIdAsync(id, cancellationToken, cart => cart.CartItems, cart => cart.Users);
         }
 
         public async Task<List<SharedCartItem>> GetCartItemsAsync(Guid id, CancellationToken cancellationToken)

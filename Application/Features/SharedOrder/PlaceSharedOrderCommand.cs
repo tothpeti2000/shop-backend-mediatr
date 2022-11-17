@@ -1,7 +1,6 @@
-﻿using Application.Mapping;
-using Application.Mapping.Profiles;
+﻿using Application.Mapping.Profiles;
+using Application.Mapping;
 using Application.Services;
-using AutoMapper;
 using Domain.Interfaces;
 using Domain.Models;
 using Domain.Repositories;
@@ -11,15 +10,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Features.Order
+namespace Application.Features.SharedOrder
 {
-    public class PlaceOrderValidator : AbstractValidator<PlaceOrderCommand>
+    public class PlaceSharedOrderValidator : AbstractValidator<PlaceSharedOrderCommand>
     {
-        public PlaceOrderValidator()
+        public PlaceSharedOrderValidator()
         {
+            RuleFor(command => command.SharedCartId).NotEmpty().NotNull();
+
             RuleFor(command => command.CustomerData).NotNull()
                 .ChildRules(details =>
                 {
@@ -40,59 +40,59 @@ namespace Application.Features.Order
         }
     }
 
-    public class PlaceOrderCommand : IRequest
+    public class PlaceSharedOrderCommand : IRequest
     {
+        public Guid SharedCartId { get; set; }
         public CustomerDetails CustomerData { get; set; }
         public DeliveryDetails DeliveryData { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
     }
 
-    public class PlaceOrderCommandHandler : IRequestHandler<PlaceOrderCommand, Unit>
+    public class PlaceSharedOrderCommandHandler : IRequestHandler<PlaceSharedOrderCommand, Unit>
     {
-        private readonly IOrderRepository orderRepository;
-        private readonly ICartRepository cartRepository;
+        private readonly ISharedOrderRepository sharedOrderRepository;
+        private readonly ISharedCartRepository sharedCartRepository;
         private readonly IProductRepository productRepository;
         private readonly IUserService userService;
         private readonly IPaymentService paymentService;
         private readonly IEmailService emailService;
-        private readonly Mapper<OrderProfile> mapper = new();
+        private readonly Mapper<SharedOrderProfile> mapper = new();
 
-        public PlaceOrderCommandHandler(
-            IOrderRepository orderRepository, 
-            ICartRepository cartRepository, 
+        public PlaceSharedOrderCommandHandler(
+            ISharedOrderRepository sharedOrderRepository,
+            ISharedCartRepository sharedCartRepository,
             IProductRepository productRepository,
             IUserService userService,
             IPaymentService paymentService,
             IEmailService emailService)
         {
-            this.orderRepository = orderRepository;
-            this.cartRepository = cartRepository;
+            this.sharedOrderRepository = sharedOrderRepository;
+            this.sharedCartRepository = sharedCartRepository;
             this.productRepository = productRepository;
             this.userService = userService;
             this.paymentService = paymentService;
             this.emailService = emailService;
         }
 
-        public async Task<Unit> Handle(PlaceOrderCommand command, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(PlaceSharedOrderCommand command, CancellationToken cancellationToken)
         {
             var userId = userService.GetUserIdFromContext();
-            var user = await userService.GetByIdAsync(userId);
-            var cart = await cartRepository.GetCartOfUserAsync(userId, cancellationToken);
+            var cart = await sharedCartRepository.GetCartByIdAsync(command.SharedCartId, cancellationToken);
 
             var outOfStockProductNames = await GetOutOfStockProductNames(cart.CartItems, cancellationToken);
 
-            if(outOfStockProductNames != null)
+            if (outOfStockProductNames != null)
             {
                 throw new InvalidOperationException("Looks like we don't have enough products in stock to complete your order. " +
                     $"You requested too many items of the following product(s): {string.Join(", ", outOfStockProductNames)}");
             }
 
-            foreach(var cartItem in cart.CartItems)
+            foreach (var cartItem in cart.CartItems)
             {
                 await productRepository.DecreaseStockAsync(cartItem.ProductId, cartItem.Amount, cancellationToken);
             }
 
-            var order = mapper.Map<PlaceOrderCommand, Domain.Models.Order>(command);
+            var order = mapper.Map<PlaceSharedOrderCommand, Domain.Models.SharedOrder>(command);
 
             if (command.PaymentMethod != PaymentMethod.OnDelivery)
             {
@@ -101,17 +101,19 @@ namespace Application.Features.Order
             }
 
             cart.Completed = true;
-            order.Cart = cart;
-            await orderRepository.AddAsync(order, cancellationToken);
+            order.SharedCart = cart;
+            await sharedOrderRepository.AddAsync(order, cancellationToken);
 
-            await cartRepository.CreateCartForUserAsync(userId, cancellationToken);
-
-            await emailService.SendOrderConfirmationEmailAsync(order, user.Name, user.Email);
+            foreach (var user in cart.Users)
+            {
+                var isOrderPlacingUser = user.Id == userId;
+                await emailService.SendSharedOrderConfirmationEmailAsync(order, user.Name, user.Email, isOrderPlacingUser);
+            }
 
             return Unit.Value;
         }
 
-        private async Task<List<string>?> GetOutOfStockProductNames(List<CartItem> cartItems, CancellationToken cancellationToken)
+        private async Task<List<string>?> GetOutOfStockProductNames(List<SharedCartItem> cartItems, CancellationToken cancellationToken)
         {
             var productNames = new List<string>();
 
@@ -128,5 +130,4 @@ namespace Application.Features.Order
             return productNames.Count > 0 ? productNames : null;
         }
     }
-
 }

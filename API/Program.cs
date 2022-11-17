@@ -33,7 +33,11 @@ builder.Services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(con
 
 // Identity
 builder.Services
-    .AddIdentityCore<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddIdentityCore<User>(options => 
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.User.RequireUniqueEmail = true;
+    })
     .AddEntityFrameworkStores<ShopDbContext>()
     .AddTokenProvider<DataProtectorTokenProvider<User>>(TokenOptions.DefaultProvider);
 
@@ -174,6 +178,7 @@ builder.Services.AddScoped<ICartItemRepository, CartItemRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ISharedCartRepository, SharedCartRepository>();
 builder.Services.AddScoped<ISharedCartItemRepository, SharedCartItemRepository>();
+builder.Services.AddScoped<ISharedOrderRepository, SharedOrderRepository>();
 
 var app = builder.Build();
 

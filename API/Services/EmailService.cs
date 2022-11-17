@@ -16,7 +16,7 @@ namespace API.Services
             this.configuration = configuration;
         }
 
-        public async Task SendOrderConfirmationEmail(Order order, string email)
+        public async Task SendOrderConfirmationEmailAsync(Order order, string name, string email)
         {
             var subject = $"Order {order.Id}";
 
@@ -27,7 +27,7 @@ namespace API.Services
                 productList += $"<li>{cartItem.Product.Name}\t${cartItem.Product.Price}</li><br/>";
             }
 
-            var body = @$"Dear <b>{order.FirstName} {order.LastName}</b>,
+            var body = @$"Dear <b>{name}</b>,
                           <br/>
                           <br/>
                           Thank you for choosing our webshop! 
@@ -45,10 +45,45 @@ namespace API.Services
                           <br/>
                           Shop";
 
-            await SendEmail(email, subject, body);
+            await SendEmailAsync(email, subject, body);
         }
 
-        private async Task SendEmail(string email, string subject, string body)
+        public async Task SendSharedOrderConfirmationEmailAsync(SharedOrder order, string name, string email, bool isOrderPlacingUser)
+        {
+            var subject = $"Shared order {order.Id}";
+            var deliveryMessage = isOrderPlacingUser ? "" : "<br/>" +
+                "The products will be delivered to another member of the shared cart. When the package arrives, we'll let you know as well.";
+
+            var productList = "";
+
+            foreach (var cartItem in order.SharedCart.CartItems)
+            {
+                productList += $"<li>{cartItem.Product.Name}\t${cartItem.Product.Price}</li><br/>";
+            }
+
+            var body = @$"Dear <b>{name}</b>,
+                          <br/>
+                          <br/>
+                          Thank you and the other members of your shared cart for choosing our webshop! 
+                          <br/>
+                          Your order was completed successfully. We'll try to deliver the products to you as soon as possible.
+                          {deliveryMessage}
+                          <br/>
+                          <br/>
+                          You ordered the following product(s) altogether:
+                          <ul>
+                            {productList}
+                          </ul>
+                          <br/>
+                          Consider choosing us next time as well!
+                          <br/>
+                          <br/>
+                          Shop";
+
+            await SendEmailAsync(email, subject, body);
+        }
+
+        private async Task SendEmailAsync(string email, string subject, string body)
         {
             var fromEmail = configuration["Email:FromEmail"];
             var smtpHost = configuration["Email:SmtpHost"];

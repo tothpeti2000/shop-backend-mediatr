@@ -10,8 +10,8 @@ namespace Domain.Models
     [DisplayName("shared cart item")]
     public class SharedCartItem: EntityBase
     {
-        public Guid CartId { get; set; }
-        public SharedCart Cart { get; set; }
+        public Guid SharedCartId { get; set; }
+        public SharedCart SharedCart { get; set; }
 
         public Guid ProductId { get; set; }
         public Product Product { get; set; }

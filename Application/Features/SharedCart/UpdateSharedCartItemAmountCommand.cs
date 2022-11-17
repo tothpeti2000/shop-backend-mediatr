@@ -59,10 +59,10 @@ namespace Application.Features.SharedCart
             var actionDetails = new ActionDetails
             {
                 Message = $"{user.Name} modified the amount of {cartItem.Product.Name}",
-                CartId = cartItem.CartId
+                CartId = cartItem.SharedCartId
             };
 
-            await sharedCartHub.ItemAmountUpdated(actionDetails, cartItem.CartId);
+            await sharedCartHub.ItemAmountUpdated(actionDetails, cartItem.SharedCartId);
 
             return Unit.Value;
         }

@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace Domain.Repositories
 {
-    public interface IOrderRepository : IRepositoryBase<Order>
+    public interface ISharedOrderRepository : IRepositoryBase<SharedOrder>
     { }
 }

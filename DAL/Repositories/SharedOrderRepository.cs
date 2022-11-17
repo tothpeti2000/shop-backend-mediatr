@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    public class SharedOrderRepository : RepositoryBase<SharedOrder>, ISharedOrderRepository
     {
-        public OrderRepository(ShopDbContext db): base(db.Orders)
+        public SharedOrderRepository(ShopDbContext db): base(db.SharedOrders)
         { }
     }
 }

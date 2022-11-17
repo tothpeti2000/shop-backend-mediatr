@@ -18,7 +18,7 @@ namespace DAL.Repositories
         public async Task<SharedCartItem> GetItemByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var cartItem = await Entities
-                .Include(cartItem => cartItem.Cart)
+                .Include(cartItem => cartItem.SharedCart)
                 .Include(cartItem => cartItem.Product)
                 .FirstOrDefaultAsync(cartItem => cartItem.Id == id, cancellationToken);
 

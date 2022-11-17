@@ -16,7 +16,7 @@ namespace DAL.Configurations
             builder.ToTable("SharedCartItem");
             builder.HasKey(ci => ci.Id);
 
-            builder.HasOne(ci => ci.Cart)
+            builder.HasOne(ci => ci.SharedCart)
                 .WithMany(c => c.CartItems);
 
             builder.HasOne(ci => ci.Product)

@@ -20,6 +20,7 @@ namespace DAL
         public DbSet<Order> Orders { get; set; }
         public DbSet<SharedCart> SharedCarts { get; set; }
         public DbSet<SharedCartItem> SharedCartItems { get; set; }
+        public DbSet<SharedOrder> SharedOrders { get; set; }
 
         public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options)
         { }
@@ -35,6 +36,7 @@ namespace DAL
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new SharedCartItemConfiguration());
             modelBuilder.ApplyConfiguration(new SharedCartConfiguration());
+            modelBuilder.ApplyConfiguration(new SharedOrderConfiguration());
         }
     }
 }

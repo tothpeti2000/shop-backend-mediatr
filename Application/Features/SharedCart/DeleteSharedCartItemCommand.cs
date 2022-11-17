@@ -56,10 +56,10 @@ namespace Application.Features.SharedCart
             var actionDetails = new ActionDetails
             {
                 Message = $"{user.Name} deleted {cartItem.Product.Name}",
-                CartId = cartItem.CartId
+                CartId = cartItem.SharedCartId
             };
 
-            await sharedCartHub.ItemDeleted(actionDetails, cartItem.CartId);
+            await sharedCartHub.ItemDeleted(actionDetails, cartItem.SharedCartId);
 
             return Unit.Value;
         }

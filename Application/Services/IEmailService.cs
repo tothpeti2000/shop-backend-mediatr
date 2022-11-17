@@ -9,6 +9,7 @@ namespace Application.Services
 {
     public interface IEmailService
     {
-        public Task SendOrderConfirmationEmail(Order order, string email);
+        public Task SendOrderConfirmationEmailAsync(Order order, string name, string email);
+        public Task SendSharedOrderConfirmationEmailAsync(SharedOrder order, string name, string email, bool isOrderPlacingUser);
     }
 }

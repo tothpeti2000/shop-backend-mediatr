@@ -771,6 +771,38 @@
           }
         }
       }
+    },
+    "/api/SharedOrders": {
+      "post": {
+        "tags": [
+          "SharedOrders"
+        ],
+        "operationId": "PlaceSharedOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceSharedOrderCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceSharedOrderCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceSharedOrderCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1146,6 +1178,25 @@
       "PlaceOrderCommand": {
         "type": "object",
         "properties": {
+          "customerData": {
+            "$ref": "#/components/schemas/CustomerDetails"
+          },
+          "deliveryData": {
+            "$ref": "#/components/schemas/DeliveryDetails"
+          },
+          "paymentMethod": {
+            "$ref": "#/components/schemas/PaymentMethod"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlaceSharedOrderCommand": {
+        "type": "object",
+        "properties": {
+          "sharedCartId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "customerData": {
             "$ref": "#/components/schemas/CustomerDetails"
           },
