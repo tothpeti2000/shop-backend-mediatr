@@ -90,121 +90,124 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81"),
+                            Id = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524"),
                             Name = "Toy"
                         },
                         new
                         {
-                            Id = new Guid("5f8f8282-e6e3-4c43-a395-1fc4540b0f6b"),
+                            Id = new Guid("cc127f77-ac7d-4820-a20e-6c60faed553b"),
+                            ImgUrl = "https://i.picsum.photos/id/450/1000/1000.jpg?hmac=Owfb_XGQV9jOBL2HnKL5bvMvlA4V6XtKLSW0JVQZx-M",
                             Name = "Play house"
                         },
                         new
                         {
-                            Id = new Guid("73623457-6530-433f-8bc8-f7e6e62b05fb"),
+                            Id = new Guid("5aefaa04-51b7-487f-8504-8d038abff676"),
                             Name = "Baby toy",
-                            ParentCategoryId = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81")
+                            ParentCategoryId = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524")
                         },
                         new
                         {
-                            Id = new Guid("0bbe9580-9cbd-4cb0-b286-0dbfb0370ca6"),
+                            Id = new Guid("f4b8dad1-98e9-4f0c-b787-53889d9fee86"),
                             Name = "Construction toy",
-                            ParentCategoryId = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81")
+                            ParentCategoryId = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524")
                         },
                         new
                         {
-                            Id = new Guid("f23a6a69-fd12-401e-ba67-1f180375ab91"),
+                            Id = new Guid("f760cb97-c5f1-4926-ba88-07cb919f5f5c"),
                             Name = "Wooden toy",
-                            ParentCategoryId = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81")
+                            ParentCategoryId = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524")
                         },
                         new
                         {
-                            Id = new Guid("4a392283-a045-4f86-8deb-5fe91990df78"),
+                            Id = new Guid("1ffbf7d8-510a-4231-819d-06fb548b4d4e"),
                             Name = "Plush figure",
-                            ParentCategoryId = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81")
+                            ParentCategoryId = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524")
                         },
                         new
                         {
-                            Id = new Guid("1fec95bf-7228-47f0-a2ad-320e5a48ec84"),
+                            Id = new Guid("4837cda7-6a16-4408-b705-7f0471f3c25f"),
                             Name = "Bicycles",
-                            ParentCategoryId = new Guid("35fd269b-1724-40e2-a563-ca5fd5598b81")
+                            ParentCategoryId = new Guid("8ccbbe77-d956-4713-9fde-5d3c8482a524")
                         },
                         new
                         {
-                            Id = new Guid("ac414255-8f6d-4914-a6db-846b93bf4b50"),
+                            Id = new Guid("53d760ec-0f49-4592-b9cd-68fbfae35097"),
+                            ImgUrl = "https://i.picsum.photos/id/385/1000/1000.jpg?hmac=RPOWB-zg2EA9rKylAZiYRlOMwcOyTADrTqU6r3iFL3w",
                             Name = "Months 0-6",
-                            ParentCategoryId = new Guid("73623457-6530-433f-8bc8-f7e6e62b05fb")
+                            ParentCategoryId = new Guid("5aefaa04-51b7-487f-8504-8d038abff676")
                         },
                         new
                         {
-                            Id = new Guid("644dcd55-77d3-4a3a-bc27-9bcc32fe8001"),
+                            Id = new Guid("672dcdd0-9ccd-4d51-b116-2600ca231d40"),
                             Name = "Months 6-18",
-                            ParentCategoryId = new Guid("73623457-6530-433f-8bc8-f7e6e62b05fb")
+                            ParentCategoryId = new Guid("5aefaa04-51b7-487f-8504-8d038abff676")
                         },
                         new
                         {
-                            Id = new Guid("42c19ed7-431f-4457-b005-14501f3ff35a"),
+                            Id = new Guid("5271cb26-30cf-4f55-9d7b-f7203555ad18"),
                             Name = "Months 18-24",
-                            ParentCategoryId = new Guid("73623457-6530-433f-8bc8-f7e6e62b05fb")
+                            ParentCategoryId = new Guid("5aefaa04-51b7-487f-8504-8d038abff676")
                         },
                         new
                         {
-                            Id = new Guid("aeec4d06-36e6-4a89-9818-df4fbbc2052e"),
+                            Id = new Guid("6bfc4035-fbe4-4fbe-bd24-5d2e9c3c5f39"),
                             Name = "DUPLO",
-                            ParentCategoryId = new Guid("0bbe9580-9cbd-4cb0-b286-0dbfb0370ca6")
+                            ParentCategoryId = new Guid("f4b8dad1-98e9-4f0c-b787-53889d9fee86")
                         },
                         new
                         {
-                            Id = new Guid("7e8bc275-48f1-4b8e-ae01-1a6adda480e2"),
+                            Id = new Guid("0a5efaf8-9a84-4fa5-bd50-b7eafa77228a"),
                             Name = "LEGO",
-                            ParentCategoryId = new Guid("0bbe9580-9cbd-4cb0-b286-0dbfb0370ca6")
+                            ParentCategoryId = new Guid("f4b8dad1-98e9-4f0c-b787-53889d9fee86")
                         },
                         new
                         {
-                            Id = new Guid("a8cd4525-601c-480e-a347-7ac7484ce53c"),
+                            Id = new Guid("42ff2b6c-172b-4617-8a2d-c4c0b611dccd"),
                             Name = "Building items",
-                            ParentCategoryId = new Guid("0bbe9580-9cbd-4cb0-b286-0dbfb0370ca6")
+                            ParentCategoryId = new Guid("f4b8dad1-98e9-4f0c-b787-53889d9fee86")
                         },
                         new
                         {
-                            Id = new Guid("908ab17b-9b40-4222-ae06-dc9732a31933"),
+                            Id = new Guid("51ea5c92-d4b4-492e-97c8-e750e69d9458"),
+                            ImgUrl = "https://i.picsum.photos/id/299/1000/1000.jpg?hmac=DRpkgVaALpt0f0Y4kSTUOtLJ66_ULgUDZn2n6pbuafA",
                             Name = "Building blocks",
-                            ParentCategoryId = new Guid("f23a6a69-fd12-401e-ba67-1f180375ab91")
+                            ParentCategoryId = new Guid("f760cb97-c5f1-4926-ba88-07cb919f5f5c")
                         },
                         new
                         {
-                            Id = new Guid("929b857d-4cc4-4d13-adcc-ec3d752c461d"),
+                            Id = new Guid("2b5b2eac-117f-4c51-a8d4-c5c75470f8f8"),
                             Name = "Toys for skill development",
-                            ParentCategoryId = new Guid("f23a6a69-fd12-401e-ba67-1f180375ab91")
+                            ParentCategoryId = new Guid("f760cb97-c5f1-4926-ba88-07cb919f5f5c")
                         },
                         new
                         {
-                            Id = new Guid("18025a78-9701-4449-a639-83890c467fd1"),
+                            Id = new Guid("6bb2e487-5580-4a80-ad3d-342418f0305e"),
                             Name = "Logic toys",
-                            ParentCategoryId = new Guid("f23a6a69-fd12-401e-ba67-1f180375ab91")
+                            ParentCategoryId = new Guid("f760cb97-c5f1-4926-ba88-07cb919f5f5c")
                         },
                         new
                         {
-                            Id = new Guid("f1e24f4c-f172-42cf-a98f-8b1d512c2b70"),
+                            Id = new Guid("410d1d35-d779-4471-816f-8c58a2238c62"),
                             Name = "Craftwork toys",
-                            ParentCategoryId = new Guid("f23a6a69-fd12-401e-ba67-1f180375ab91")
+                            ParentCategoryId = new Guid("f760cb97-c5f1-4926-ba88-07cb919f5f5c")
                         },
                         new
                         {
-                            Id = new Guid("92b518d5-8b17-4f55-a3b3-49816b6a1976"),
+                            Id = new Guid("73fb3063-109a-41a5-abf4-63bbeeaa6757"),
                             Name = "Baby taxis",
-                            ParentCategoryId = new Guid("1fec95bf-7228-47f0-a2ad-320e5a48ec84")
+                            ParentCategoryId = new Guid("4837cda7-6a16-4408-b705-7f0471f3c25f")
                         },
                         new
                         {
-                            Id = new Guid("7b1a9164-0ee3-435e-bae4-a012747b1618"),
+                            Id = new Guid("a3eb2710-c642-446a-aca8-006e8a4c1ef9"),
                             Name = "Motors",
-                            ParentCategoryId = new Guid("1fec95bf-7228-47f0-a2ad-320e5a48ec84")
+                            ParentCategoryId = new Guid("4837cda7-6a16-4408-b705-7f0471f3c25f")
                         },
                         new
                         {
-                            Id = new Guid("4bc8109c-61a8-4dcd-a5f9-441681de601e"),
+                            Id = new Guid("86357998-1b32-43ae-986b-0cafd02c2da4"),
                             Name = "Tricycle",
-                            ParentCategoryId = new Guid("1fec95bf-7228-47f0-a2ad-320e5a48ec84")
+                            ParentCategoryId = new Guid("4837cda7-6a16-4408-b705-7f0471f3c25f")
                         });
                 });
 
@@ -292,100 +295,110 @@ namespace DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b2b347e3-beb7-4772-9aff-eb6f31dd99dc"),
+                            Id = new Guid("81f1aa56-ee74-4552-bf4b-a54d265e4f20"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("ac414255-8f6d-4914-a6db-846b93bf4b50"),
+                            CategoryId = new Guid("53d760ec-0f49-4592-b9cd-68fbfae35097"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/327/1000/1000.jpg?hmac=Th1XeWH2ua76frL7a8K82YuaROT3uSk3f_o5LO_3row",
                             Name = "Activity playgim",
                             Price = 18.75,
                             Stock = 21
                         },
                         new
                         {
-                            Id = new Guid("522521e4-25d5-4781-89ec-4648a46d15f9"),
+                            Id = new Guid("81db98b6-a87d-4ed8-a493-179746f50ae0"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("ac414255-8f6d-4914-a6db-846b93bf4b50"),
+                            CategoryId = new Guid("53d760ec-0f49-4592-b9cd-68fbfae35097"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/235/1000/1000.jpg?hmac=Of5tErj6Ycj_VJNGohIzGzzs37NpCUEllDPDtClgUrU",
                             Name = "Colorful baby book",
                             Price = 4.3499999999999996,
                             Stock = 58
                         },
                         new
                         {
-                            Id = new Guid("82ee0639-dcdd-44ce-a3da-f7a2c19cbd60"),
+                            Id = new Guid("849ab0c9-1a1c-4acc-929f-2328db278e6b"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("644dcd55-77d3-4a3a-bc27-9bcc32fe8001"),
+                            CategoryId = new Guid("672dcdd0-9ccd-4d51-b116-2600ca231d40"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/29/1000/1000.jpg?hmac=zM2FTvPtz6CXt1Bzr_J98LjswsUrmf-3Pu9qUo6hFQ0",
                             Name = "Baby telephone",
                             Price = 9.3000000000000007,
                             Stock = 18
                         },
                         new
                         {
-                            Id = new Guid("3cb1b48b-21c9-4db0-bd04-66b735f9ddfa"),
+                            Id = new Guid("0f8a527a-bf96-4e27-a7de-fa6f9e63d571"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("42c19ed7-431f-4457-b005-14501f3ff35a"),
+                            CategoryId = new Guid("5271cb26-30cf-4f55-9d7b-f7203555ad18"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/8/1000/1000.jpg?hmac=Q5oihxGkEUjwyAhaqO9C5cx1rtTqQNJOppecSfAsAc0",
                             Name = "Fisher Price hammer toy",
                             Price = 20.899999999999999,
                             Stock = 58
                         },
                         new
                         {
-                            Id = new Guid("ac58394f-5e95-486f-b26d-75c7ccbc9bd9"),
+                            Id = new Guid("620758e2-9645-490c-8cf4-dc1031d2f937"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("908ab17b-9b40-4222-ae06-dc9732a31933"),
+                            CategoryId = new Guid("51ea5c92-d4b4-492e-97c8-e750e69d9458"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/278/1000/1000.jpg?hmac=8BLH_ePU2_RxgsOzMddCiD72NHSMt7U9T9U6NFycNjY",
                             Name = "Mega Blocks 24 pcs",
                             Price = 10.800000000000001,
                             Stock = 47
                         },
                         new
                         {
-                            Id = new Guid("4a072af6-aecc-4b91-a3b5-b6561cf81dd3"),
+                            Id = new Guid("99dead9d-254d-41bb-87df-3abf8f2b177a"),
                             AverageRating = 4.7999999999999998,
-                            CategoryId = new Guid("908ab17b-9b40-4222-ae06-dc9732a31933"),
+                            CategoryId = new Guid("51ea5c92-d4b4-492e-97c8-e750e69d9458"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/28/1000/1000.jpg?hmac=MOxf3493-WAfg36txWAkIAlj2qJY_RXm36atJaccRZc",
                             Name = "Maxi Blocks 56 pcs",
                             Price = 4.6500000000000004,
                             Stock = 36
                         },
                         new
                         {
-                            Id = new Guid("f7a4ba5b-2ff7-4176-9940-d1f1a44c3b68"),
+                            Id = new Guid("82564795-d3c4-473e-9488-5091e29167e2"),
                             AverageRating = 4.9000000000000004,
-                            CategoryId = new Guid("908ab17b-9b40-4222-ae06-dc9732a31933"),
+                            CategoryId = new Guid("51ea5c92-d4b4-492e-97c8-e750e69d9458"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/214/1000/1000.jpg?hmac=PYFsJHb1io7myR36YsXzd5zuUbjksBoazPvQrjX-n5E",
                             Name = "Building Blocks 80 pcs",
                             Price = 10.9,
                             Stock = 25
                         },
                         new
                         {
-                            Id = new Guid("ff360d9c-f8d0-4650-b5b8-43893d9aaf98"),
+                            Id = new Guid("b67f4aef-3b39-4b12-8db8-7a3f1bb40fb2"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("a8cd4525-601c-480e-a347-7ac7484ce53c"),
+                            CategoryId = new Guid("42ff2b6c-172b-4617-8a2d-c4c0b611dccd"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/74/1000/1000.jpg?hmac=qyw_GbDDT5ax1EE8yALr-sc0E7PyJyLByU4xUdyfRHA",
                             Name = "Lego City harbour",
                             Price = 68.900000000000006,
                             Stock = 12
                         },
                         new
                         {
-                            Id = new Guid("477b2f45-0bf6-4466-b2f5-46411e2e0341"),
+                            Id = new Guid("f08946ac-460d-4d39-8ce8-8ef5447bf961"),
                             AverageRating = 3.5,
-                            CategoryId = new Guid("aeec4d06-36e6-4a89-9818-df4fbbc2052e"),
+                            CategoryId = new Guid("6bfc4035-fbe4-4fbe-bd24-5d2e9c3c5f39"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/93/1000/1000.jpg?hmac=sF1Aco6Mg-JGRiATFCB08Kx1hNkERckjuRnEuphU1Sw",
                             Name = "Lego Duplo Excavator",
                             Price = 16.0,
                             Stock = 26
                         },
                         new
                         {
-                            Id = new Guid("eb5272ad-17a6-46c2-9363-b2eb4c8d71ec"),
+                            Id = new Guid("56980f50-0cba-4999-b7c4-864084a0bb9f"),
                             AverageRating = 5.0,
-                            CategoryId = new Guid("5f8f8282-e6e3-4c43-a395-1fc4540b0f6b"),
+                            CategoryId = new Guid("cc127f77-ac7d-4820-a20e-6c60faed553b"),
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac nisl tortor. Nulla consectetur pellentesque sagittis. Nulla sed condimentum tortor, eu vehicula erat. Etiam non pellentesque nisl, at porta orci. Pellentesque porttitor venenatis molestie. Cras sit amet nunc vitae quam vestibulum ornare. Vestibulum viverra erat ac leo rhoncus ullamcorper. Praesent volutpat lacus eu magna congue congue. Nullam faucibus at risus ut accumsan. Vivamus nec vulputate enim. Maecenas dapibus eu elit vel sollicitudin. Morbi non feugiat lacus. Curabitur sit amet luctus diam. Mauris aliquam porta massa, tristique venenatis nibh viverra sed. Mauris pharetra vulputate quam, id lacinia sapien imperdiet quis.\r\n\r\nNunc in ex convallis, pellentesque nisi eget, laoreet dui. Aenean velit sem, tristique quis porttitor sit amet, bibendum et enim. Aliquam erat volutpat. Donec finibus ligula a ex pharetra pulvinar. Etiam et urna id quam euismod maximus. Proin congue est quis dolor dictum tempus. Aenean in arcu nulla.\r\n\r\nProin bibendum metus sed lorem commodo, vel rutrum orci egestas. Vivamus venenatis tellus vitae interdum hendrerit. Nam accumsan, nisl at sollicitudin blandit, eros elit sollicitudin turpis, et pulvinar tellus felis vel elit. Quisque vestibulum eros sit amet vestibulum scelerisque. Vestibulum finibus diam felis, a vulputate metus molestie non. Duis in pellentesque ex. Etiam.",
+                            ImgUrl = "https://i.picsum.photos/id/10/1000/1000.jpg?hmac=8imXWM_Cxe6_cWjyUbT2Vh7oxwiz12HfzJHp6CLoGwM",
                             Name = "Child supervision for 1 hour",
                             Price = 2.0,
                             Stock = 0
