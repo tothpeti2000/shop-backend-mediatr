@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Hubs;
 
 namespace Application.Features.SharedOrder
 {
@@ -53,25 +54,31 @@ namespace Application.Features.SharedOrder
         private readonly ISharedOrderRepository sharedOrderRepository;
         private readonly ISharedCartRepository sharedCartRepository;
         private readonly IProductRepository productRepository;
+        private readonly IUnitOfWork uow;
         private readonly IUserService userService;
         private readonly IPaymentService paymentService;
         private readonly IEmailService emailService;
+        private readonly ISharedCartHub sharedCartHub;
         private readonly Mapper<SharedOrderProfile> mapper = new();
 
         public PlaceSharedOrderCommandHandler(
             ISharedOrderRepository sharedOrderRepository,
             ISharedCartRepository sharedCartRepository,
             IProductRepository productRepository,
+            IUnitOfWork uow,
             IUserService userService,
             IPaymentService paymentService,
-            IEmailService emailService)
+            IEmailService emailService,
+            ISharedCartHub sharedCartHub)
         {
             this.sharedOrderRepository = sharedOrderRepository;
             this.sharedCartRepository = sharedCartRepository;
             this.productRepository = productRepository;
+            this.uow = uow;
             this.userService = userService;
             this.paymentService = paymentService;
             this.emailService = emailService;
+            this.sharedCartHub = sharedCartHub;
         }
 
         public async Task<Unit> Handle(PlaceSharedOrderCommand command, CancellationToken cancellationToken)
@@ -100,7 +107,7 @@ namespace Application.Features.SharedOrder
                 order.Paid = true;
             }
 
-            cart.Completed = true;
+            cart.Status = SharedCartStatus.Completed;
             order.SharedCart = cart;
             await sharedOrderRepository.AddAsync(order, cancellationToken);
 
@@ -109,6 +116,10 @@ namespace Application.Features.SharedOrder
                 var isOrderPlacingUser = user.Id == userId;
                 await emailService.SendSharedOrderConfirmationEmailAsync(order, user.Name, user.Email, isOrderPlacingUser);
             }
+
+            await uow.SaveChangesAsync();
+
+            await sharedCartHub.OrderPlaced(cart.Id);
 
             return Unit.Value;
         }

@@ -636,7 +636,7 @@
       }
     },
     "/api/SharedCarts/add-item": {
-      "post": {
+      "put": {
         "tags": [
           "SharedCarts"
         ],
@@ -667,12 +667,12 @@
         }
       }
     },
-    "/api/SharedCarts/{id}/items": {
+    "/api/SharedCarts/{id}/details": {
       "get": {
         "tags": [
           "SharedCarts"
         ],
-        "operationId": "GetSharedCartItems",
+        "operationId": "GetSharedCartDetails",
         "parameters": [
           {
             "name": "id",
@@ -690,17 +690,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                  "$ref": "#/components/schemas/GetSharedCartDetailsResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                  "$ref": "#/components/schemas/GetSharedCartDetailsResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/GetSharedCartItemsResponse"
+                  "$ref": "#/components/schemas/GetSharedCartDetailsResponse"
                 }
               }
             }
@@ -761,6 +761,38 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/DeleteSharedCartItemCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/SharedCarts/update-status": {
+      "put": {
+        "tags": [
+          "SharedCarts"
+        ],
+        "operationId": "UpdateStatus",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStatusCommand"
               }
             }
           }
@@ -1073,12 +1105,15 @@
         },
         "additionalProperties": false
       },
-      "GetSharedCartItemsResponse": {
+      "GetSharedCartDetailsResponse": {
         "type": "object",
         "properties": {
           "cartName": {
             "type": "string",
             "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/SharedCartStatus"
           },
           "sharedCartItems": {
             "type": "array",
@@ -1308,6 +1343,14 @@
         },
         "additionalProperties": false
       },
+      "SharedCartStatus": {
+        "enum": [
+          "Active",
+          "CheckoutInProgress",
+          "Completed"
+        ],
+        "type": "string"
+      },
       "TopCategory": {
         "type": "object",
         "properties": {
@@ -1350,6 +1393,19 @@
           "amount": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateStatusCommand": {
+        "type": "object",
+        "properties": {
+          "sharedCartId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/SharedCartStatus"
           }
         },
         "additionalProperties": false

@@ -8,15 +8,18 @@ namespace Application.Hubs
 {
     public interface ISharedCartHub
     {
-        Task UserJoinedCart(string message, Guid cartId);
-        Task ItemAdded(ActionDetails details, Guid cartId);
-        Task ItemDeleted(ActionDetails details, Guid cartId);
-        Task ItemAmountUpdated(ActionDetails details, Guid cartId);
+        Task UserJoinedCart(ActionDetails details);
+        Task ItemAdded(ActionDetails details);
+        Task ItemDeleted(ActionDetails details);
+        Task ItemAmountUpdated(ActionDetails details);
+        Task CheckoutStarted(Guid cartId);
+        Task CheckoutAborted(Guid cartId);
+        Task OrderPlaced(Guid cartId);
     }
 
     public class ActionDetails
     {
-        public string Message { get; set; }
         public Guid CartId { get; set; }
+        public string? Message { get; set; }
     }
 }

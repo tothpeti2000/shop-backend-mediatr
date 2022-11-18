@@ -12,28 +12,46 @@ namespace API.Hubs
             this.hubContext = hubContext;
         }
 
-        public async Task UserJoinedCart(string message, Guid cartId)
+        public async Task UserJoinedCart(ActionDetails details)
         {
-            await hubContext.Clients.Group(cartId.ToString())
-                .UserJoinedCart(message, cartId);
+            await hubContext.Clients.Group(details.CartId.ToString())
+                .UserJoinedCart(details);
         }
 
-        public async Task ItemAdded(ActionDetails details, Guid cartId)
+        public async Task ItemAdded(ActionDetails details)
         {
-            await hubContext.Clients.Group(cartId.ToString())
-                .ItemAdded(details, cartId);
+            await hubContext.Clients.Group(details.CartId.ToString())
+                .ItemAdded(details);
         }
 
-        public async Task ItemDeleted(ActionDetails details, Guid cartId)
+        public async Task ItemDeleted(ActionDetails details)
         {
-            await hubContext.Clients.Group(cartId.ToString())
-                .ItemDeleted(details, cartId);
+            await hubContext.Clients.Group(details.CartId.ToString())
+                .ItemDeleted(details);
         }
 
-        public async Task ItemAmountUpdated(ActionDetails details, Guid cartId)
+        public async Task ItemAmountUpdated(ActionDetails details)
+        {
+            await hubContext.Clients.Group(details.CartId.ToString())
+                .ItemAmountUpdated(details);
+        }
+
+        public async Task CheckoutStarted(Guid cartId)
         {
             await hubContext.Clients.Group(cartId.ToString())
-                .ItemAmountUpdated(details, cartId);
+                .CheckoutStarted(cartId);
+        }
+
+        public async Task CheckoutAborted(Guid cartId)
+        {
+            await hubContext.Clients.Group(cartId.ToString())
+                .CheckoutAborted(cartId);
+        }
+
+        public async Task OrderPlaced(Guid cartId)
+        {
+            await hubContext.Clients.Group(cartId.ToString())
+                .OrderPlaced(cartId);
         }
     }
 }

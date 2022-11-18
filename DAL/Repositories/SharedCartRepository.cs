@@ -17,7 +17,7 @@ namespace DAL.Repositories
 
         public async Task<List<SharedCart>> GetCartsOfUserAsync(Guid userId, CancellationToken cancellationToken)
         {
-            return await GetAsync(c => c.Users.Any(u => u.Id == userId) && !c.Completed, null, cancellationToken, c => c.Users);
+            return await GetAsync(c => c.Users.Any(u => u.Id == userId) && c.Status != SharedCartStatus.Completed, null, cancellationToken, c => c.Users);
         }
 
         public async Task<List<string>> GetAllPasscodesAsync(CancellationToken cancellationToken)
@@ -38,12 +38,8 @@ namespace DAL.Repositories
 
         public async Task<SharedCart> GetCartByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await GetByIdAsync(id, cancellationToken, cart => cart.CartItems, cart => cart.Users);
-        }
-
-        public async Task<List<SharedCartItem>> GetCartItemsAsync(Guid id, CancellationToken cancellationToken)
-        {
             var cart = await Entities
+                .Include(cart => cart.Users)
                 .Include(cart => cart.CartItems)
                 .ThenInclude(cartItem => cartItem.Product)
                 .FirstOrDefaultAsync(cartItem => cartItem.Id == id, cancellationToken);
@@ -53,13 +49,7 @@ namespace DAL.Repositories
                 throw new EntityNotFoundException(typeof(SharedCart));
             }
 
-            return cart.CartItems;
-        }
-
-        public async Task<string> GetNameByIdAsync(Guid id, CancellationToken cancellationToken)
-        {
-            var cart = await GetByIdAsync(id, cancellationToken);
-            return cart.Name;
+            return cart;
         }
     }
 }

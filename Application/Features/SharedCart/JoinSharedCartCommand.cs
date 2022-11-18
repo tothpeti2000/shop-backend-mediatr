@@ -67,10 +67,15 @@ namespace Application.Features.SharedCart
             }
 
             cart.Users.Add(user);
-
             await uow.SaveChangesAsync();
 
-            await sharedCartHub.UserJoinedCart($"{user.Name} has joined the {cart.Name} shared cart", cart.Id);
+            var actionDetails = new ActionDetails
+            {
+                CartId = cart.Id,
+                Message = $"{user.Name} has joined the {cart.Name} shared cart"
+            };
+
+            await sharedCartHub.UserJoinedCart(actionDetails);
 
             return mapper.Map<Domain.Models.SharedCart, JoinSharedCartResponse>(cart);
         }

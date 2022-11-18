@@ -12,20 +12,20 @@ using System.Threading.Tasks;
 
 namespace Application.Features.SharedCart
 {
-    public class GetSharedCartItemsValidator : AbstractValidator<GetSharedCartItemsRequest>
+    public class GetSharedCartDetailsValidator : AbstractValidator<GetSharedCartDetailsRequest>
     {
-        public GetSharedCartItemsValidator()
+        public GetSharedCartDetailsValidator()
         {
             RuleFor(request => request.Id).NotEmpty().NotNull();
         }
     }
 
-    public class GetSharedCartItemsRequest : IRequest<GetSharedCartItemsResponse>
+    public class GetSharedCartDetailsRequest : IRequest<GetSharedCartDetailsResponse>
     {
         public Guid Id { get; set; }
     }
 
-    public class GetSharedCartItemsResponse
+    public class GetSharedCartDetailsResponse
     {
         public class SharedCartItemDto
         {
@@ -37,28 +37,29 @@ namespace Application.Features.SharedCart
         }
 
         public string CartName { get; set; }
+        public SharedCartStatus Status { get; set; }
         public List<SharedCartItemDto> SharedCartItems { get; set; }
     }
 
-    public class GetSharedCartItemsRequestHandler : IRequestHandler<GetSharedCartItemsRequest, GetSharedCartItemsResponse>
+    public class GetSharedCartDetailsRequestHandler : IRequestHandler<GetSharedCartDetailsRequest, GetSharedCartDetailsResponse>
     {
         private readonly ISharedCartRepository repository;
         private readonly Mapper<SharedCartProfile> mapper = new();
 
-        public GetSharedCartItemsRequestHandler(ISharedCartRepository repository)
+        public GetSharedCartDetailsRequestHandler(ISharedCartRepository repository)
         {
             this.repository = repository;
         }
 
-        public async Task<GetSharedCartItemsResponse> Handle(GetSharedCartItemsRequest request, CancellationToken cancellationToken)
+        public async Task<GetSharedCartDetailsResponse> Handle(GetSharedCartDetailsRequest request, CancellationToken cancellationToken)
         {
-            var name = await repository.GetNameByIdAsync(request.Id, cancellationToken);
-            var cartItems = await repository.GetCartItemsAsync(request.Id, cancellationToken);
+            var cart = await repository.GetCartByIdAsync(request.Id, cancellationToken);
 
-            return new GetSharedCartItemsResponse
+            return new GetSharedCartDetailsResponse
             {
-                CartName = name,
-                SharedCartItems = mapper.Map<List<SharedCartItem>, List<GetSharedCartItemsResponse.SharedCartItemDto>>(cartItems)
+                CartName = cart.Name,
+                Status = cart.Status,
+                SharedCartItems = mapper.Map<List<SharedCartItem>, List<GetSharedCartDetailsResponse.SharedCartItemDto>>(cart.CartItems)
             };
         }
     }

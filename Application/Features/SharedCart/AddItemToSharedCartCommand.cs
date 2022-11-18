@@ -78,11 +78,11 @@ namespace Application.Features.SharedCart
 
             var actionDetails = new ActionDetails
             {
-                Message = message,
-                CartId = command.CartId
+                CartId = command.CartId,
+                Message = message
             };
 
-            await sharedCartHub.ItemAdded(actionDetails, command.CartId);
+            await sharedCartHub.ItemAdded(actionDetails);
 
             return Unit.Value;
         }

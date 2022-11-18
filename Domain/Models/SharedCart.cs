@@ -15,6 +15,6 @@ namespace Domain.Models
         public string Passcode { get; set; }
         public List<User> Users { get; set; }
         public List<SharedCartItem> CartItems { get; set; }
-        public bool Completed { get; set; }
+        public SharedCartStatus Status { get; set; }
     }
 }

@@ -36,16 +36,16 @@ namespace API.Controllers
             return await mediator.Send(command, cancellationToken);
         }
 
-        [HttpPost("add-item")]
+        [HttpPut("add-item")]
         public async Task AddItemToSharedCart(AddItemToSharedCartCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
         }
 
-        [HttpGet("{id}/items")]
-        public async Task<GetSharedCartItemsResponse> GetSharedCartItems(Guid id, CancellationToken cancellationToken)
+        [HttpGet("{id}/details")]
+        public async Task<GetSharedCartDetailsResponse> GetSharedCartDetails(Guid id, CancellationToken cancellationToken)
         {
-            return await mediator.Send(new GetSharedCartItemsRequest { Id = id }, cancellationToken);
+            return await mediator.Send(new GetSharedCartDetailsRequest { Id = id }, cancellationToken);
         }
 
         [HttpPut("update-item")]
@@ -56,6 +56,12 @@ namespace API.Controllers
 
         [HttpPut("delete-item")]
         public async Task DeleteSharedCartItem(DeleteSharedCartItemCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
+        }
+
+        [HttpPut("update-status")]
+        public async Task UpdateStatus(UpdateStatusCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);
         }
