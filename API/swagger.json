@@ -1112,6 +1112,10 @@
             "type": "string",
             "nullable": true
           },
+          "passcode": {
+            "type": "string",
+            "nullable": true
+          },
           "status": {
             "$ref": "#/components/schemas/SharedCartStatus"
           },
@@ -1304,6 +1308,10 @@
             "nullable": true
           },
           "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "passcode": {
             "type": "string",
             "nullable": true
           },

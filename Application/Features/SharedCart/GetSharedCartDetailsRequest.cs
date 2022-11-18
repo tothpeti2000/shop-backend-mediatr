@@ -37,6 +37,7 @@ namespace Application.Features.SharedCart
         }
 
         public string CartName { get; set; }
+        public string Passcode { get; set; }
         public SharedCartStatus Status { get; set; }
         public List<SharedCartItemDto> SharedCartItems { get; set; }
     }
@@ -58,6 +59,7 @@ namespace Application.Features.SharedCart
             return new GetSharedCartDetailsResponse
             {
                 CartName = cart.Name,
+                Passcode = cart.Passcode,
                 Status = cart.Status,
                 SharedCartItems = mapper.Map<List<SharedCartItem>, List<GetSharedCartDetailsResponse.SharedCartItemDto>>(cart.CartItems)
             };
