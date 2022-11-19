@@ -17,15 +17,27 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task RegisterUser([FromBody] RegisterUserCommand dto)
+        public async Task RegisterUser(RegisterUserCommand command, CancellationToken cancellationToken)
         {
-            await mediator.Send(dto);
+            await mediator.Send(command, cancellationToken);
         }
 
         [HttpPost("login")]
-        public async Task<LoginUserResponse> LoginUser([FromBody] LoginUserRequest dto)
+        public async Task<LoginUserResponse> LoginUser(LoginUserRequest request, CancellationToken cancellationToken)
         {
-            return await mediator.Send(dto);
+            return await mediator.Send(request, cancellationToken);
+        }
+
+        [HttpPost("forgot-password")]
+        public async Task InitiatePasswordReset(ForgotPasswordCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
+        }
+
+        [HttpPost("reset-password")]
+        public async Task ResetPassword(ResetPasswordCommand command, CancellationToken cancellationToken)
+        {
+            await mediator.Send(command, cancellationToken);
         }
     }
 }

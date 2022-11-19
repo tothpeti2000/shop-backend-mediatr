@@ -11,5 +11,6 @@ namespace Application.Services
     {
         public Task SendOrderConfirmationEmailAsync(Order order, string name, string email);
         public Task SendSharedOrderConfirmationEmailAsync(SharedOrder order, string name, string email, bool isOrderPlacingUser);
+        public Task SendPasswordResetEmailAsync(string resetToken, Guid userId, string name, string email);
     }
 }

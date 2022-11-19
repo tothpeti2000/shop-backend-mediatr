@@ -4,6 +4,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using Domain.Models;
+using System.Web;
 
 namespace API.Services
 {
@@ -76,6 +77,25 @@ namespace API.Services
                           </ul>
                           <br/>
                           Consider choosing us next time as well!
+                          <br/>
+                          <br/>
+                          Shop";
+
+            await SendEmailAsync(email, subject, body);
+        }
+
+        public async Task SendPasswordResetEmailAsync(string resetToken, Guid userId, string name, string email)
+        {
+            var subject = "Reset password";
+            // Without HttpUtility.UrlEncode, we would get an Invalid token error caused by + characters in the token
+            var resetLink = $"{configuration["Frontend:BaseUrl"]}/reset-password?token={HttpUtility.UrlEncode(resetToken)}&id={userId}";
+
+            var body = @$"Dear <b>{name}</b>,
+                          <br/>
+                          <br/>
+                          You requested us to reset your password. In case you didn't initiate the password reset process, ignore this message.
+                          <br/>
+                          Click <a href='{resetLink}'>here</a> to reset your password!
                           <br/>
                           <br/>
                           Shop";

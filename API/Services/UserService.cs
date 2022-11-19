@@ -42,6 +42,11 @@ namespace API.Services
             return await userManager.FindByNameAsync(name);
         }
 
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await userManager.FindByEmailAsync(email);
+        }
+
         public async Task<User> GetByIdAsync(Guid id)
         {
             return await userManager.FindByIdAsync(id.ToString());
@@ -71,6 +76,17 @@ namespace API.Services
         {
             var user = await userManager.FindByIdAsync(userId.ToString());
             var result = await userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            CheckResult(result);
+        }
+
+        public async Task<string> GeneratePasswordResetTokenAsync(User user)
+        {
+            return await userManager.GeneratePasswordResetTokenAsync(user);
+        }
+
+        public async Task ResetPasswordAsync(User user, string resetToken, string newPassword)
+        {
+            var result = await userManager.ResetPasswordAsync(user, resetToken, newPassword);
             CheckResult(result);
         }
 
