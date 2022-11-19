@@ -8,6 +8,7 @@ namespace Application.Hubs
 {
     public interface ISharedCartHub
     {
+        Task NotAllowed();
         Task UserJoinedCart(ActionDetails details);
         Task ItemAdded(ActionDetails details);
         Task ItemDeleted(ActionDetails details);

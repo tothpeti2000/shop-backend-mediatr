@@ -12,6 +12,11 @@ namespace API.Hubs
             this.hubContext = hubContext;
         }
 
+        public async Task NotAllowed()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task UserJoinedCart(ActionDetails details)
         {
             await hubContext.Clients.Group(details.CartId.ToString())
