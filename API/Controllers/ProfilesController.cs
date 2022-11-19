@@ -18,7 +18,7 @@ namespace API.Controllers
             this.mediator = mediator;
         }
 
-        [HttpPost("edit")]
+        [HttpPut("edit")]
         public async Task EditProfile(EditProfileCommand command, CancellationToken cancellationToken)
         {
             await mediator.Send(command, cancellationToken);

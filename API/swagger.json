@@ -87,7 +87,7 @@
       }
     },
     "/api/Carts/add-item": {
-      "post": {
+      "put": {
         "tags": [
           "Carts"
         ],
@@ -478,7 +478,7 @@
       }
     },
     "/api/Profiles/edit": {
-      "post": {
+      "put": {
         "tags": [
           "Profiles"
         ],
@@ -587,7 +587,7 @@
       }
     },
     "/api/SharedCarts/join": {
-      "post": {
+      "put": {
         "tags": [
           "SharedCarts"
         ],

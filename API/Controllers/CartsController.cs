@@ -19,7 +19,7 @@ namespace API.Controllers
             this.mediator = mediator;
         }
 
-        [HttpPost("add-item")]
+        [HttpPut("add-item")]
         public async Task AddItemToCart(AddItemToCartCommand command, CancellationToken cancellationToken)
         {   
             await mediator.Send(command, cancellationToken);

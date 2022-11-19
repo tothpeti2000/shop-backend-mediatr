@@ -30,7 +30,7 @@ namespace API.Controllers
             return await mediator.Send(new GetSharedCartsRequest(), cancellationToken);
         }
 
-        [HttpPost("join")]
+        [HttpPut("join")]
         public async Task<JoinSharedCartResponse> JoinSharedCart(JoinSharedCartCommand command, CancellationToken cancellationToken)
         {
             return await mediator.Send(command, cancellationToken);
