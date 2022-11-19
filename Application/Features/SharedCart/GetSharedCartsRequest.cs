@@ -23,6 +23,7 @@ namespace Application.Features.SharedCart
             public string Name { get; set; }
             public string? Description { get; set; }
             public string Passcode { get; set; }
+            public SharedCartStatus Status { get; set; }
             public List<string> UserNames { get; set; }
         }
 

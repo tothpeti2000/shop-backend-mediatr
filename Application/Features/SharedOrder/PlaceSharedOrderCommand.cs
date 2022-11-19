@@ -86,6 +86,11 @@ namespace Application.Features.SharedOrder
             var userId = userService.GetUserIdFromContext();
             var cart = await sharedCartRepository.GetCartByIdAsync(command.SharedCartId, cancellationToken);
 
+            if (cart.Status == SharedCartStatus.Completed)
+            {
+                throw new InvalidOperationException("You can't place the order since the cart has been marked as completed already.");
+            }
+
             var outOfStockProductNames = await GetOutOfStockProductNames(cart.CartItems, cancellationToken);
 
             if (outOfStockProductNames != null)

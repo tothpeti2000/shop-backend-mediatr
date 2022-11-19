@@ -1311,6 +1311,9 @@
             "type": "string",
             "nullable": true
           },
+          "status": {
+            "$ref": "#/components/schemas/SharedCartStatus"
+          },
           "userNames": {
             "type": "array",
             "items": {

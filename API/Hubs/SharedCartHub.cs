@@ -21,10 +21,10 @@ namespace API.Hubs
             var userId = Context.User.Claims
                 .ElementAt(0).Value;
 
-            var sharedCartId = Context.GetHttpContext().Request.Query["shared_cart_id"].ElementAt(0);
-
             var carts = await sharedCartRepository.GetCartsOfUserAsync(Guid.Parse(userId), default);
             var cartIds = carts.Select(c => c.Id).ToList();
+
+            var sharedCartId = Context.GetHttpContext().Request.Query["shared_cart_id"].FirstOrDefault();
 
             if (sharedCartId != null && !cartIds.Contains(Guid.Parse(sharedCartId)))
             {
