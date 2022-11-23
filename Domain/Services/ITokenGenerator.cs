@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace Domain.Services
 {
-    public interface IPaymentService
+    public interface ITokenGenerator
     {
-        public Task StartPaymentTransaction();
+        public string GenerateToken(Guid userId);
     }
 }

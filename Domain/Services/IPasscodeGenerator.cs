@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace Domain.Services
 {
-    public interface ITokenGenerator
+    public interface IPasscodeGenerator
     {
-        public string GenerateToken(Guid userId);
+        public string GeneratePasscode(int length);
     }
 }

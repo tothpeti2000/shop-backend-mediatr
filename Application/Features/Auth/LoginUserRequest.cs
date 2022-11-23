@@ -1,4 +1,4 @@
-﻿using Application.Services;
+﻿using Domain.Services;
 using Domain.Models;
 using FluentValidation;
 using MediatR;
@@ -35,12 +35,10 @@ namespace Application.Features.Auth
     public class LoginUserRequestHandler : IRequestHandler<LoginUserRequest, LoginUserResponse>
     {
         private readonly IUserService userService;
-        private readonly ITokenGenerator tokenGenerator;
 
-        public LoginUserRequestHandler(IUserService userService, ITokenGenerator tokenGenerator)
+        public LoginUserRequestHandler(IUserService userService)
         {
             this.userService = userService;
-            this.tokenGenerator = tokenGenerator;
         }
 
         public async Task<LoginUserResponse> Handle(LoginUserRequest request, CancellationToken cancellationToken)
@@ -60,7 +58,7 @@ namespace Application.Features.Auth
             }
 
             return new LoginUserResponse() {
-                Token = tokenGenerator.GenerateToken(user.Id),
+                Token = userService.GenerateTokenForUser(user.Id),
                 Name = user.Name
             };
         }

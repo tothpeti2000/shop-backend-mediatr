@@ -1,5 +1,5 @@
 ﻿using Application.Features.Auth;
-using Application.Services;
+using Domain.Services;
 using Domain.Repositories;
 using FluentValidation;
 using MediatR;

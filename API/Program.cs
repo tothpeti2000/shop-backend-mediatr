@@ -4,6 +4,7 @@ using API.Services;
 using Application.Hubs;
 using Application.Pipeline;
 using Application.Services;
+using Domain.Services;
 using DAL;
 using DAL.Exceptions;
 using DAL.Repositories;

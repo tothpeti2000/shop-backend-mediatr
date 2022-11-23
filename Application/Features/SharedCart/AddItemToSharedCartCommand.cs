@@ -1,7 +1,7 @@
 ﻿using Application.Hubs;
 using Application.Mapping;
 using Application.Mapping.Profiles;
-using Application.Services;
+using Domain.Services;
 using Domain.Interfaces;
 using Domain.Models;
 using Domain.Repositories;

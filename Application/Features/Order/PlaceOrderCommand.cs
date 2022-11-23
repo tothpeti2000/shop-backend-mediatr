@@ -1,6 +1,6 @@
 ﻿using Application.Mapping;
 using Application.Mapping.Profiles;
-using Application.Services;
+using Domain.Services;
 using AutoMapper;
 using Domain.Interfaces;
 using Domain.Models;

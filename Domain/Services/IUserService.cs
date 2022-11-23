@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace Domain.Services
 {
     public interface IUserService
     {
         public Guid GetUserIdFromContext();
+        public string GenerateTokenForUser(Guid userId);
         public Task CreateUserAsync(User user, string password);
         public Task<User> GetByNameAsync(string name);
         public Task<User> GetByEmailAsync(string email);

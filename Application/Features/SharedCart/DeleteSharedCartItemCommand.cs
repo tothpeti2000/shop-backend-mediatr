@@ -1,5 +1,5 @@
 ﻿using Application.Hubs;
-using Application.Services;
+using Domain.Services;
 using Domain.Interfaces;
 using Domain.Repositories;
 using FluentValidation;

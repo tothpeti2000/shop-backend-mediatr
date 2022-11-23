@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace Domain.Services
 {
-    public interface IPasscodeGenerator
+    public interface IPaymentService
     {
-        public string GeneratePasscode(int length);
+        public Task StartPaymentTransaction();
     }
 }

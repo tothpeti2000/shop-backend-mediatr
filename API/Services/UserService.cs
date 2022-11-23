@@ -1,4 +1,4 @@
-﻿using Application.Services;
+﻿using Domain.Services;
 using DAL;
 using Domain.Models;
 using MediatR;
@@ -12,11 +12,16 @@ namespace API.Services
     {
         private readonly ClaimsPrincipal user;
         private readonly UserManager<User> userManager;
+        private readonly ITokenGenerator tokenGenerator;
 
-        public UserService(IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
+        public UserService(
+            IHttpContextAccessor httpContextAccessor, 
+            UserManager<User> userManager,
+            ITokenGenerator tokenGenerator)
         {
             user = httpContextAccessor.HttpContext.User;
             this.userManager = userManager;
+            this.tokenGenerator = tokenGenerator;
         }
 
         public Guid GetUserIdFromContext()
@@ -29,6 +34,11 @@ namespace API.Services
             }
 
             return Guid.Parse(userIdString);
+        }
+
+        public string GenerateTokenForUser(Guid userId)
+        {
+            return tokenGenerator.GenerateToken(userId);
         }
 
         public async Task CreateUserAsync(User user, string password)

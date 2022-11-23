@@ -1,6 +1,6 @@
-﻿using Application.Services;
+﻿using Domain.Services;
 
-namespace API.Services
+namespace Application.Services
 {
     public class MockPaymentService : IPaymentService
     {

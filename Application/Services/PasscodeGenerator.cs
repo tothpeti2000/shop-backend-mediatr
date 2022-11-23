@@ -1,7 +1,7 @@
-﻿using Application.Services;
+﻿using Domain.Services;
 using Domain.Repositories;
 
-namespace API.Services
+namespace Application.Services
 {
     public class PasscodeGenerator : IPasscodeGenerator
     {
