@@ -25,7 +25,13 @@ namespace API.Services
 
             foreach(var cartItem in order.Cart.CartItems)
             {
-                productList += $"<li>{cartItem.Product.Name}\t${cartItem.Product.Price}</li><br/>";
+                productList += @$"<li>
+                                    <p>
+                                      <span style='margin-right: 2rem'>{cartItem.Product.Name}</span>
+                                      <span style='margin-right: 1rem'>${cartItem.Product.Price}</span>
+                                      <span>(x{cartItem.Amount})</span>
+                                    </p>
+                                  </li>";
             }
 
             var body = @$"Dear <b>{name}</b>,
@@ -59,7 +65,13 @@ namespace API.Services
 
             foreach (var cartItem in order.SharedCart.CartItems)
             {
-                productList += $"<li>{cartItem.Product.Name}\t${cartItem.Product.Price}</li><br/>";
+                productList += @$"<li>
+                                    <p>
+                                      <span style='margin-right: 2rem'>{cartItem.Product.Name}</span>
+                                      <span style='margin-right: 1rem'>${cartItem.Product.Price}</span>
+                                      <span>(x{cartItem.Amount})</span>
+                                    </p>
+                                  </li>";
             }
 
             var body = @$"Dear <b>{name}</b>,
@@ -118,7 +130,6 @@ namespace API.Services
             var client = new SmtpClient(smtpHost, smtpPort)
             {
                 Credentials = CredentialCache.DefaultNetworkCredentials,
-                EnableSsl = false
             };
 
             await client.SendMailAsync(message);
