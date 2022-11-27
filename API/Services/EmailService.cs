@@ -50,7 +50,7 @@ namespace API.Services
                           Consider choosing us next time as well!
                           <br/>
                           <br/>
-                          Shop";
+                          Awesome Prices";
 
             await SendEmailAsync(email, subject, body);
         }
@@ -91,7 +91,7 @@ namespace API.Services
                           Consider choosing us next time as well!
                           <br/>
                           <br/>
-                          Shop";
+                          Awesome Prices";
 
             await SendEmailAsync(email, subject, body);
         }
@@ -110,7 +110,7 @@ namespace API.Services
                           Click <a href='{resetLink}'>here</a> to reset your password!
                           <br/>
                           <br/>
-                          Shop";
+                          Awesome Prices";
 
             await SendEmailAsync(email, subject, body);
         }
