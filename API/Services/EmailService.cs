@@ -28,7 +28,7 @@ namespace API.Services
                 productList += @$"<li>
                                     <p>
                                       <span style='margin-right: 2rem'>{cartItem.Product.Name}</span>
-                                      <span style='margin-right: 1rem'>${cartItem.Product.Price}</span>
+                                      <span style='margin-right: 1rem'>${cartItem.Product.Price.ToString("n2")}</span>
                                       <span>(x{cartItem.Amount})</span>
                                     </p>
                                   </li>";
@@ -68,7 +68,7 @@ namespace API.Services
                 productList += @$"<li>
                                     <p>
                                       <span style='margin-right: 2rem'>{cartItem.Product.Name}</span>
-                                      <span style='margin-right: 1rem'>${cartItem.Product.Price}</span>
+                                      <span style='margin-right: 1rem'>${cartItem.Product.Price.ToString("n2")}</span>
                                       <span>(x{cartItem.Amount})</span>
                                     </p>
                                   </li>";
