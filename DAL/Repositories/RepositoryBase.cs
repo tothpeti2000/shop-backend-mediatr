@@ -60,12 +60,10 @@ namespace DAL.Repositories
                 query = query.Include(include);
             }
 
-            var filtered = query
-                .Where(filter);
-
+            var filtered = query.Where(filter);
             var sorted = sortHelper.ApplySort(filtered, orderByString);
 
-            var totalCount = await sorted.CountAsync(cancellationToken);
+            var totalCount = await filtered.CountAsync(cancellationToken);
             var totalPages = (int)Math.Ceiling((double)totalCount / count);
 
             var entities = await sorted
